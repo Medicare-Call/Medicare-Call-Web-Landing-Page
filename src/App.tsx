@@ -247,8 +247,8 @@ export default function App() {
                   className={`w-full px-4 py-[10px] text-[12px] text-left transition-colors rounded-[10px] 
             ${
               activeSection === item.id
-                ? "bg-[var(--mc-gray-1)] font-medium"
-                : "hover:bg-[#f4fcf8]"
+                ? "bg-[var(--mc-gray-1)]"
+                : "hover:bg-[var(--mc-gray-1)]"
             } text-[var(--mc-gray-9)]`}
                 >
                   {item.label}
