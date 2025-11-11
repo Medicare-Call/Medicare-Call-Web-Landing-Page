@@ -140,7 +140,7 @@ export default function App() {
     <div className="relative bg-neutral-50 min-h-screen">
       {/* GNB - Sticky Header */}
       <div className="backdrop-blur-sm backdrop-filter bg-[rgba(255,255,255,0.7)] shrink-0 sticky top-0 w-full z-50">
-        <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-4 md:px-[60px] lg:px-[120px] py-[12px] relative w-full">
+        <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[16px] py-[19px] md:py-[12px] md:px-[60px] lg:px-[120px] relative w-full">
           <div className="content-stretch flex items-center justify-between relative shrink-0 w-full mx-auto">
             <div
               className="content-stretch flex h-[19px] items-center relative shrink-0 w-[134px] cursor-pointer"
@@ -187,22 +187,7 @@ export default function App() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden overflow-clip relative shrink-0 size-[24px]"
             >
-              <div className="absolute inset-[20.83%_16.67%_79.17%_16.67%]">
-                <svg
-                  className="block size-full"
-                  fill="none"
-                  preserveAspectRatio="none"
-                  viewBox="0 0 18 2"
-                >
-                  <path
-                    d="M0.999806 0.999806H16.9967"
-                    stroke="#666666"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.99961"
-                  />
-                </svg>
-              </div>
+              <img src="./icons/hamburger.svg" />
               <div className="absolute bottom-1/2 left-[16.67%] right-[16.67%] top-1/2">
                 <svg
                   className="block size-full"
@@ -238,39 +223,41 @@ export default function App() {
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
-            <div className="flex flex-col py-2">
-              <button
-                onClick={() => scrollToSection("features")}
-                className="px-4 py-3 text-left hover:bg-[#f4fcf8] transition-colors"
-              >
-                <p className="font-['Pretendard',sans-serif] text-[#666666] text-[14px]">
-                  핵심 기능
-                </p>
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
-                className="px-4 py-3 text-left hover:bg-[#f4fcf8] transition-colors"
-              >
-                <p className="font-['Pretendard',sans-serif] text-[#666666] text-[14px]">
-                  이용 후기
-                </p>
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="px-4 py-3 text-left hover:bg-[#f4fcf8] transition-colors"
-              >
-                <p className="font-['Pretendard',sans-serif] text-[#666666] text-[14px]">
-                  상담 신청
-                </p>
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-[9999] overflow-y-auto">
+          <div className="flex pt-4 pb-6 px-4 justify-end">
+            <img
+              src="./icons/x_mobile.svg"
+              onClick={() => setMobileMenuOpen(false)}
+              alt="닫기"
+            />
+          </div>
+          <div className="flex flex-col">
+            {[
+              { id: "features", label: "기능" },
+              { id: "testimonials", label: "이용 후기" },
+              { id: "contact", label: "상담 신청" },
+            ].map((item) => (
+              <div className="px-4 py-[6px]">
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`w-full px-4 py-[10px] text-[12px] text-left transition-colors rounded-[10px] 
+            ${
+              activeSection === item.id
+                ? "bg-[var(--mc-gray-1)] font-medium"
+                : "hover:bg-[#f4fcf8]"
+            } text-[var(--mc-gray-9)]`}
+                >
+                  {item.label}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Hero Section - Mobile */}
       <section className="md:hidden relative w-full overflow-hidden">
