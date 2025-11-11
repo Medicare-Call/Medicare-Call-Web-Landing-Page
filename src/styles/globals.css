@@ -48,10 +48,11 @@
 
   /* Medicare Call Design System Colors */
   --mc-bg-color: #fafafa;
-  --mc-main-color: #00b859;
-  --mc-main-g100: #daffed;
-  --mc-main-g300: #00cc63;
-  --mc-main-g500: #00a350;
+  --mc-main-color: #35c156;
+  --mc-main-g100: #aaefac;
+  --mc-main-g200: #89e38b;
+  --mc-main-g300: #52cf6c;
+  --mc-main-g500: #00a34f;
   --mc-main-g600: #00994a;
   --mc-main-g700: #007a3b;
   --mc-main-g800: #005c2d;

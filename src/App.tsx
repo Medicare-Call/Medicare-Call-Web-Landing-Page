@@ -150,7 +150,7 @@ export default function App() {
                 <img
                   alt="메디케어콜 로고"
                   className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-                  src="./medicare.png"
+                  src="./images/medicare.png"
                 />
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function App() {
           <img
             alt=""
             className="absolute h-[172.74%] left-[-194.48%] max-w-none top-[-14.29%] w-[376.92%]"
-            src="./main.png"
+            src="./images/main.png"
           />
         </div>
         <div className="flex flex-row items-center size-full">
@@ -290,7 +290,7 @@ export default function App() {
               </div>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="bg-[#35c156] box-border content-stretch flex gap-[10px] items-center justify-center px-[26px] py-[16px] relative rounded-[10px] shrink-0 hover:bg-[#00a350] transition-all duration-300 cursor-pointer border-none"
+                className="bg-[var(--mc-main-color)] box-border content-stretch flex gap-[10px] items-center justify-center px-[26px] py-[16px] relative rounded-[10px] shrink-0 hover:bg-[var(--mc-main-g500)] transition-all duration-300 cursor-pointer border-none"
               >
                 <p className="font-['Pretendard',sans-serif] font-semibold leading-[1.3] not-italic relative shrink-0 text-[20px] text-neutral-50 text-nowrap whitespace-pre">
                   지금 바로 상담 신청하기
@@ -304,7 +304,11 @@ export default function App() {
       {/* Hero Section - Desktop */}
       <section className="hidden md:block relative w-full overflow-hidden">
         <div className="absolute h-[550px] lg:h-[600px] left-0 top-0 w-full overflow-hidden pointer-events-none z-0">
-          <img alt="" className="w-full h-full object-cover" src="./main.png" />
+          <img
+            alt=""
+            className="w-full h-full object-cover"
+            src="./images/main.png"
+          />
         </div>
         <div className="content-stretch flex flex-col gap-[50px] items-center relative shrink-0 w-full min-w-[713px]px-[100px] md:py-[118px] lg:py-[138px]">
           <div className="content-stretch flex flex-col gap-[20px] items-center relative shrink-0 w-full">
@@ -338,14 +342,15 @@ export default function App() {
         className="md:hidden relative shrink-0 w-full bg-white"
       >
         <div className="flex flex-row items-center size-full">
-          <div className="box-border content-stretch flex gap-[10px] items-center px-[16px] py-[60px] relative size-full">
-            <div className="basis-0 content-stretch flex flex-col gap-[52px] grow items-start min-h-px min-w-px relative shrink-0">
-              <div className="content-stretch flex flex-col gap-[20px] items-start leading-[1.3] not-italic relative shrink-0 text-center w-full">
-                <div className="font-['Pretendard',sans-serif] font-bold relative shrink-0 text-[#313131] text-[26px] w-full">
+          <div className="box-border flex gap-[10px] items-center px-[16px] py-[60px] relative size-full">
+            <div className="flex flex-col gap-[52px] grow items-start w-full">
+              {/* 헤더 문구 */}
+              <div className="flex flex-col gap-[20px] items-start text-center w-full">
+                <div className="font-['Pretendard',sans-serif] font-bold text-[#313131] text-[26px] w-full">
                   <p className="mb-0">혹시, 이런 걱정 하고</p>
                   <p>계신가요?</p>
                 </div>
-                <div className="font-['Pretendard',sans-serif] relative shrink-0 text-[#666666] text-[14px] w-full">
+                <div className="font-['Pretendard',sans-serif] text-[#666666] text-[14px] w-full">
                   <p className="mb-0">부모님을 사랑하는 마음만큼,</p>
                   <p className="mb-0">현실의 벽은 높기만 합니다.</p>
                   <p className="mb-0">
@@ -355,93 +360,66 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full">
-                {/* Card 1 */}
-                <div className="h-[192px] relative rounded-[10px] shrink-0 w-full">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
-                    <img
-                      alt="홀로 집에 계신 부모님이 창가에 앉아 창밖을 바라보는 모습"
-                      className="absolute h-[143.99%] left-[-6.27%] max-w-none top-[-16.92%] w-[120.7%]"
-                      src="./elderly-parent-alone-at-home.png"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center size-full">
-                    <div className="box-border content-stretch flex flex-col gap-[10px] h-[192px] items-start justify-center p-[20px] relative w-full">
-                      <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-[193px]">
-                        <div className="font-['Pretendard',sans-serif] leading-[1.3] min-w-full not-italic relative shrink-0 text-[16px] text-white w-[min-content]">
-                          <p className="mb-0">홀로 계신 부모님,</p>
-                          <p>오늘 하루는 어떠셨을까?</p>
-                        </div>
-                        <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 w-[177px]">
-                          <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#d2d2d2] text-[14px] w-full">
-                            자녀와 떨어져 지내는 어르신
-                          </p>
-                          <p className="font-['Pretendard',sans-serif] font-bold relative shrink-0 text-[#10d266] text-[32px] w-full">
-                            346만명
-                          </p>
-                        </div>
-                      </div>
+              {/* 카드 목록 */}
+              <div className="flex flex-col gap-[12px] w-full">
+                {[
+                  {
+                    img: "./images/elderly-parent-alone-at-home-mobile.png",
+                    alt: "홀로 집에 계신 부모님이 창가에 앉아 창밖을 바라보는 모습",
+                    title1: "홀로 계신 부모님,",
+                    title2: "오늘 하루는 어떠셨을까?",
+                    subtitle: "자녀와 떨어져 지내는 어르신",
+                    value: "346만명",
+                  },
+                  {
+                    img: "./images/elderly-hand-holding-medicine-glass-mobile.png",
+                    alt: "손에 약을 들고 있는 어르신과 물잔을 건네는 모습",
+                    title1: "드셔야 할 약이 많은데,",
+                    title2: "제때 챙겨 드셨을까?",
+                    subtitle: "어르신 하루 평균 복약 수",
+                    value: "5.3개 이상",
+                  },
+                  {
+                    img: "./images/daughter-worrying-about-elderly-parent-mobile.png",
+                    alt: "창가에 앉아 있는 여성의 뒷모습, 부모님을 걱정하는 자녀의 마음을 표현한 이미지",
+                    title1: "바쁘다는 핑계로",
+                    title2: "또 안부전화를 놓쳤네",
+                    subtitle: "마음과 달리 자주 못하는 전화",
+                    value: "불안한 자녀의 마음",
+                  },
+                ].map((card, idx) => (
+                  <div
+                    key={idx}
+                    className="relative h-[192px] rounded-[10px] w-full"
+                  >
+                    {/* 배경 이미지 */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
+                      <img
+                        src={card.img}
+                        alt={card.alt}
+                        className="absolute w-full h-full object-cover"
+                      />
                     </div>
-                  </div>
-                </div>
 
-                {/* Card 2 */}
-                <div className="relative rounded-[10px] shrink-0 w-full">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
-                    <img
-                      alt="손에 약을 들고 있는 어르신과 물잔을 건네는 모습"
-                      className="absolute h-[223.94%] left-0 max-w-none top-[-73.79%] w-full"
-                      src="./elderly-hand-holding-medicine-glass.png"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center size-full">
-                    <div className="box-border content-stretch flex flex-col gap-[10px] items-start justify-center p-[20px] relative w-full">
-                      <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-[193px]">
-                        <div className="font-['Pretendard',sans-serif] leading-[1.3] min-w-full not-italic relative shrink-0 text-[16px] text-white w-[min-content]">
-                          <p className="mb-0">드셔야 할 약이 많은데,</p>
-                          <p>제때 챙겨 드셨을까?</p>
+                    {/* 내용 */}
+                    <div className="flex flex-col justify-center size-full p-[20px]">
+                      <div className="flex flex-col gap-[24px] items-start z-10">
+                        <div className="text-white text-[16px] font-['Pretendard',sans-serif] leading-[1.3]">
+                          <p className="mb-0">{card.title1}</p>
+                          <p>{card.title2}</p>
                         </div>
-                        <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 w-[177px]">
-                          <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#d2d2d2] text-[14px] w-full">
-                            어르신 하루 평균 복약 수
+                        <div className="flex flex-col gap-[8px] items-start">
+                          <p className="text-[#d2d2d2] text-[14px]">
+                            {card.subtitle}
                           </p>
-                          <p className="font-['Pretendard',sans-serif] font-bold relative shrink-0 text-[#10d266] text-[32px] w-full">
-                            5.3개 이상
+                          <p className="text-[#10d266] text-[32px] font-bold">
+                            {card.value}
                           </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Card 3 */}
-                <div className="h-[192px] relative rounded-[10px] shrink-0 w-full">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
-                    <img
-                      alt=""
-                      className="absolute h-[220.69%] left-[-33.67%] max-w-none top-[-47.13%] w-[162.98%]"
-                      src="./senior-woman-confronting-alzheimer-disease.png"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center size-full">
-                    <div className="box-border content-stretch flex flex-col gap-[10px] h-[192px] items-start justify-center p-[20px] relative w-full">
-                      <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-[241px]">
-                        <div className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-white w-full">
-                          <p className="mb-0">바쁘다는 핑계로</p>
-                          <p>또 안부전화를 놓쳤네</p>
-                        </div>
-                        <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 w-full">
-                          <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#d2d2d2] text-[14px] w-full">
-                            마음과 달리 자주 못하는 전화
-                          </p>
-                          <p className="font-['Pretendard',sans-serif] font-bold relative shrink-0 text-[#10d266] text-[32px] w-full">
-                            불안한 자녀의 마음
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -457,7 +435,7 @@ export default function App() {
                 <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[#313131] text-[30px] lg:text-[32px] text-center w-full">
                   <p>혹시, 이런 걱정 하고 계신가요?</p>
                 </div>
-                <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[#666666] text-[18px] text-center w-full">
+                <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[18px] text-center w-full">
                   <p className="relative shrink-0">
                     부모님을 사랑하는 마음만큼, 현실의 벽은 높기만 합니다.
                   </p>
@@ -467,91 +445,67 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="content-stretch flex flex-row gap-[33px] items-stretch relative shrink-0 w-full justify-center">
-                {/* Card 1 */}
-                <div className="h-[450px] lg:h-[480px] relative rounded-[20px] shrink-0 w-[300px] lg:w-[330px] overflow-hidden">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[20px] z-0">
-                    <img
-                      alt="홀로 집에 계신 부모님이 창가에 앉아 창밖을 바라보는 모습"
-                      className="absolute h-full left-[-36.76%] max-w-none top-0 w-[217.98%] object-cover"
-                      src="/elderly-parent-alone-at-home.png"
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
-                  </div>
-                  <div className="box-border content-stretch flex gap-[10px] items-center px-[28px] py-[30px] relative size-full z-10">
-                    <div className="content-stretch flex flex-col h-full items-start justify-between relative shrink-0 w-[193px]">
-                      <div className="font-['Pretendard',sans-serif] leading-[1.3] min-w-full not-italic relative shrink-0 text-[20px] text-white w-[min-content]">
-                        <p className="mb-0">홀로 계신 부모님,</p>
-                        <p>오늘 하루는 어떠셨을까?</p>
-                      </div>
-                      <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 w-[177px]">
-                        <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#d2d2d2] text-[14px] w-full">
-                          자녀와 떨어져 지내는 어르신
-                        </p>
-                        <p className="font-['Pretendard',sans-serif] font-bold relative shrink-0 text-[#10d266] text-[40px] w-full">
-                          346만명
-                        </p>
-                      </div>
+              <div className="content-stretch flex flex-row gap-[33px] items-stretch justify-center relative shrink-0 w-full">
+                {/* Card 공통 스타일 변수화 */}
+                {[
+                  {
+                    img: "./images/elderly-parent-alone-at-home-desktop.png",
+                    alt: "홀로 집에 계신 부모님이 창가에 앉아 창밖을 바라보는 모습",
+                    title1: "홀로 계신 부모님,",
+                    title2: "오늘 하루는 어떠셨을까?",
+                    subtitle: "자녀와 떨어져 지내는 어르신",
+                    value: "346만명",
+                  },
+                  {
+                    img: "./images/elderly-hand-holding-medicine-glass-desktop.png",
+                    alt: "손에 약을 들고 있는 어르신과 물잔을 건네는 모습",
+                    title1: "드셔야 할 약이 많은데,",
+                    title2: "제때 챙겨 드셨을까?",
+                    subtitle: "어르신 하루 평균 복약 수",
+                    value: "5.3개 이상",
+                  },
+                  {
+                    img: "./images/daughter-worrying-about-elderly-parent-desktop.png",
+                    alt: "창가에 앉아 있는 여성의 뒷모습, 부모님을 걱정하는 자녀의 마음을 표현한 이미지",
+                    title1: "바쁘다는 핑계로",
+                    title2: "또 안부전화를 놓쳤네",
+                    subtitle: "마음과 달리 자주 못하는 전화",
+                    value: "불안한\n자녀의 마음",
+                  },
+                ].map((card, idx) => (
+                  <div
+                    key={idx}
+                    className="relative h-[450px] max-w-[330px] lg:h-[480px] flex-1 rounded-[20px] overflow-hidden"
+                  >
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                      <img
+                        src={card.img}
+                        alt={card.alt}
+                        className="absolute w-full h-full object-cover"
+                      />
                     </div>
-                  </div>
-                </div>
 
-                {/* Card 2 */}
-                <div className="h-[450px] lg:h-[480px] relative rounded-[20px] shrink-0 w-[300px] lg:w-[329px] overflow-hidden">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[20px] z-0">
-                    <img
-                      alt="손에 약을 들고 있는 어르신과 물잔을 건네는 모습"
-                      className="absolute h-full left-0 max-w-none top-0 w-[116.72%] object-cover"
-                      src="./elderly-hand-holding-medicine-glass.png"
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
-                  </div>
-                  <div className="box-border content-stretch flex gap-[10px] items-center p-[30px] relative size-full z-10">
-                    <div className="content-stretch flex flex-col h-full items-start justify-between relative shrink-0">
-                      <div className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[20px] text-white w-[176px]">
-                        <p className="mb-0">드셔야 할 약이 많은데,</p>
-                        <p>제때 챙겨 드셨을까?</p>
+                    {/* 내용 */}
+                    <div className="relative z-10 flex flex-col justify-between h-full p-[30px]">
+                      <div
+                        className={
+                          "text-[20px] text-white font-['Pretendard',sans-serif] leading-[1.3] text-left"
+                        }
+                      >
+                        <p className="mb-0">{card.title1}</p>
+                        <p>{card.title2}</p>
                       </div>
-                      <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.3] not-italic relative shrink-0">
-                        <p className="font-['Pretendard',sans-serif] min-w-full relative shrink-0 text-[#d2d2d2] text-[14px] w-[min-content]">
-                          어르신 하루 평균 복약 수
+                      <div className={"flex flex-col gap-[8px] items-start"}>
+                        <p className="text-[#d2d2d2] text-[14px]">
+                          {card.subtitle}
                         </p>
-                        <p className="font-['Pretendard',sans-serif] font-bold relative shrink-0 text-[#10d266] text-[40px] text-nowrap whitespace-pre">
-                          5.3개 이상
+                        <p className="text-[#10d266] text-[40px] font-bold whitespace-pre-line">
+                          {card.value}
                         </p>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Card 3 */}
-                <div className="h-[450px] lg:h-[480px] relative rounded-[20px] shrink-0 w-[300px] lg:w-[331px] overflow-hidden">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[20px] z-0">
-                    <img
-                      alt="창가에 앉아 있는 여성의 뒷모습, 부모님을 걱정하는 자녀의 마음을 표현한 이미지"
-                      className="absolute h-full left-[-54.39%] max-w-none top-0 w-[206.39%] object-cover"
-                      src="./daughter-worrying-about-elderly-parent.png"
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
-                  </div>
-                  <div className="box-border content-stretch flex gap-[10px] items-center p-[30px] relative size-full z-10">
-                    <div className="content-stretch flex flex-col gap-[200px] lg:gap-[238px] h-full items-end relative shrink-0">
-                      <div className="font-['Pretendard',sans-serif] leading-[1.3] min-w-full not-italic relative shrink-0 text-[20px] text-white w-[min-content]">
-                        <p className="mb-0">바쁘다는 핑계로</p>
-                        <p>또 안부전화를 놓쳤네</p>
-                      </div>
-                      <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.3] not-italic relative shrink-0 w-full">
-                        <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#d2d2d2] text-[14px] w-full text-right">
-                          마음과 달리 자주 못하는 전화
-                        </p>
-                        <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] relative shrink-0 text-[#10d266] text-[40px] text-right w-full">
-                          <p className="mb-0">불안한</p>
-                          <p>자녀의 마음</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -844,7 +798,7 @@ export default function App() {
                   <img
                     alt="부모님의 건강 상태와 복약 정보를 확인할 수 있는 모바일 리포트 화면"
                     className="absolute h-[160.99%] left-0 max-w-none top-0 w-[100.01%]"
-                    src="./parent-health-report-mobile-preview.png"
+                    src="./images/parent-health-report-mobile-preview.png"
                   />
                 </div>
               </div>
@@ -952,7 +906,7 @@ export default function App() {
                   <img
                     alt="부모님의 건강 상태와 복약 정보를 확인할 수 있는 모바일 리포트 화면"
                     className="absolute h-[147.98%] left-0 max-w-none top-0 w-[100.01%]"
-                    src="./parent-health-report-mobile-preview.png"
+                    src="./images/parent-health-report-mobile-preview.png"
                   />
                 </div>
               </div>
@@ -1298,7 +1252,7 @@ export default function App() {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="bg-[#35c156] relative rounded-[10px] shrink-0 w-full hover:bg-[#00a350] transition-all disabled:opacity-50 disabled:cursor-not-allowed border-0 cursor-pointer"
+                          className="bg-[var(--mc-main-color)] relative rounded-[10px] shrink-0 w-full hover:bg-[var(--mc-main-g500)] transition-all disabled:opacity-50 disabled:cursor-not-allowed border-0 cursor-pointer"
                         >
                           <div className="flex flex-row items-center justify-center size-full">
                             <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[20px] md:px-[26px] py-[14px] md:py-[16px] relative w-full">
@@ -1331,7 +1285,7 @@ export default function App() {
                     <img
                       alt="메디케어콜 로고"
                       className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-                      src="./medicare.png"
+                      src="./images/medicare.png"
                     />
                   </div>
                 </div>
