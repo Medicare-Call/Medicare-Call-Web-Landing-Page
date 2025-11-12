@@ -546,11 +546,15 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="content-stretch flex flex-col md:flex-row gap-[12px] md:gap-[30px] items-center md:items-stretch relative shrink-0 w-full justify-center">
-                {/* Step 1 */}
-                <div className="bg-white box-border content-stretch flex flex-col gap-[10px] items-center justify-center px-[28px] py-[20px] relative rounded-[20px] shadow-[-4px_0px_8px_0px_rgba(34,34,34,0.02),4px_0px_8px_0px_rgba(34,34,34,0.02),0px_4px_8px_0px_rgba(34,34,34,0.02)] shrink-0 w-full md:w-[300px] lg:w-[338px]">
-                  <div className="content-stretch flex flex-col gap-[28px] items-center relative shrink-0 w-full">
-                    <div className="relative shrink-0 size-[80px]">
+              <div className="content-stretch flex flex-col md:flex-row gap-[12px] md:gap-[30px] items-center md:items-stretch justify-center w-full">
+                {[
+                  {
+                    id: 1,
+                    title: "AI 안부전화",
+                    desc1: "매일 정해진 시간에 AI가 자동으로 부모님께",
+                    desc2: "다정하게 전화를 걸어 대화하며",
+                    desc3: "그날의 건강과 감정 상태를 확인합니다.",
+                    icon: (
                       <svg
                         className="block size-full"
                         fill="none"
@@ -559,110 +563,88 @@ export default function App() {
                       >
                         <path d={svgPaths.p16ce8c00} fill="#35C156" />
                       </svg>
-                    </div>
-                    <div className="content-stretch flex flex-col gap-[16px] items-center not-italic relative shrink-0 text-center w-full">
-                      <p className="font-['Pretendard',sans-serif] font-semibold md:font-bold leading-[1.3] md:leading-[21.426px] relative shrink-0 text-[16px] md:text-[15.304px] text-neutral-950 w-full">
-                        1. AI 안부전화
-                      </p>
-                      <div className="font-['Pretendard',sans-serif] leading-[1.3] relative shrink-0 text-[#666666] text-[14px] w-full">
-                        <p className="mb-0">
-                          매일 정해진 시간에 AI가 자동으로 부모님께
-                        </p>
-                        <p className="mb-0">다정하게 전화를 걸어 대화하며</p>
-                        <p>그날의 건강과 감정 상태를 확인합니다.</p>
+                    ),
+                  },
+                  {
+                    id: 2,
+                    title: "건강 상태 분석",
+                    desc1: "식사, 복약, 수면, 통증 여부 등",
+                    desc2: "대화 속 건강 데이터를 분석하고",
+                    desc3:
+                      "'아프다', '외롭다' 같은 위험 신호를 즉시 감지합니다.",
+                    icon: (
+                      <div className="overflow-clip relative shrink-0 size-[80px]">
+                        <div className="absolute bg-[#e6faef] h-[62.136px] left-[18.64px] rounded-[5.649px] top-[8.54px] w-[43.495px]" />
+                        <div className="absolute left-[38.06px] size-[33.814px] top-[30.29px]">
+                          <svg
+                            className="block size-full"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            viewBox="0 0 34 34"
+                          >
+                            <circle
+                              cx="16.9072"
+                              cy="16.9072"
+                              fill="white"
+                              fillOpacity="0.1"
+                              r="14.7396"
+                              stroke="#35C156"
+                              strokeWidth="4.33517"
+                            />
+                          </svg>
+                        </div>
+                        <div className="absolute h-0 left-[24.85px] top-[16.31px] w-[31.068px]">
+                          <svg
+                            className="block w-full h-[2px]"
+                            fill="none"
+                            viewBox="0 0 33 2"
+                          >
+                            <path
+                              d="M0.776699 0.776699H31.8447"
+                              stroke="#AAEFAC"
+                              strokeLinecap="round"
+                              strokeWidth="1.5534"
+                            />
+                          </svg>
+                        </div>
+                        <div className="absolute h-0 left-[24.85px] top-[21.75px] w-[24.078px]">
+                          <svg
+                            className="block w-full h-[2px]"
+                            fill="none"
+                            viewBox="0 0 26 2"
+                          >
+                            <path
+                              d="M0.776699 0.776699H24.8544"
+                              stroke="#AAEFAC"
+                              strokeLinecap="round"
+                              strokeWidth="1.5534"
+                            />
+                          </svg>
+                        </div>
+                        <div className="absolute h-0 left-[24.85px] top-[27.18px] w-[13.204px]">
+                          <svg
+                            className="block w-full h-[2px]"
+                            fill="none"
+                            viewBox="0 0 15 2"
+                          >
+                            <path
+                              d="M0.776699 0.776699H13.9806"
+                              stroke="#AAEFAC"
+                              strokeLinecap="round"
+                              strokeWidth="1.5534"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="bg-white box-border content-stretch flex flex-col gap-[10px] items-center justify-center px-[28px] py-[20px] relative rounded-[20px] shadow-[-4px_0px_8px_0px_rgba(34,34,34,0.02),4px_0px_8px_0px_rgba(34,34,34,0.02),0px_4px_8px_0px_rgba(34,34,34,0.02)] shrink-0 w-full md:w-[300px] lg:w-[338px]">
-                  <div className="content-stretch flex flex-col gap-[28px] items-center relative shrink-0 w-full">
-                    <div className="overflow-clip relative shrink-0 size-[80px]">
-                      <div className="absolute bg-[#e6faef] h-[62.136px] left-[18.64px] rounded-[5.649px] top-[8.54px] w-[43.495px]" />
-                      <div className="absolute left-[38.06px] size-[33.814px] top-[30.29px]">
-                        <svg
-                          className="block size-full"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 34 34"
-                        >
-                          <circle
-                            cx="16.9072"
-                            cy="16.9072"
-                            fill="white"
-                            fillOpacity="0.1"
-                            r="14.7396"
-                            stroke="#35C156"
-                            strokeWidth="4.33517"
-                          />
-                        </svg>
-                      </div>
-                      <div className="absolute h-0 left-[24.85px] top-[16.31px] w-[31.068px]">
-                        <svg
-                          className="block w-full h-[2px]"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 33 2"
-                        >
-                          <path
-                            d="M0.776699 0.776699H31.8447"
-                            stroke="#AAEFAC"
-                            strokeLinecap="round"
-                            strokeWidth="1.5534"
-                          />
-                        </svg>
-                      </div>
-                      <div className="absolute h-0 left-[24.85px] top-[21.75px] w-[24.078px]">
-                        <svg
-                          className="block w-full h-[2px]"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 26 2"
-                        >
-                          <path
-                            d="M0.776699 0.776699H24.8544"
-                            stroke="#AAEFAC"
-                            strokeLinecap="round"
-                            strokeWidth="1.5534"
-                          />
-                        </svg>
-                      </div>
-                      <div className="absolute h-0 left-[24.85px] top-[27.18px] w-[13.204px]">
-                        <svg
-                          className="block w-full h-[2px]"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 15 2"
-                        >
-                          <path
-                            d="M0.776699 0.776699H13.9806"
-                            stroke="#AAEFAC"
-                            strokeLinecap="round"
-                            strokeWidth="1.5534"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="content-stretch flex flex-col gap-[16px] items-center not-italic relative shrink-0 text-center w-full">
-                      <p className="font-['Pretendard',sans-serif] font-semibold md:font-bold leading-[1.3] md:leading-[21.426px] relative shrink-0 text-[16px] md:text-[15.304px] text-neutral-950 w-full">
-                        2. 건강 상태 분석
-                      </p>
-                      <div className="font-['Pretendard',sans-serif] leading-[1.3] relative shrink-0 text-[#666666] text-[14px] w-full">
-                        <p className="mb-0">식사, 복약, 수면, 통증 여부 등</p>
-                        <p className="mb-0">대화 속 건강 데이터를 분석하고</p>
-                        <p>
-                          '아프다', '외롭다' 같은 위험 신호를 즉시 감지합니다.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step 3 */}
-                <div className="bg-white box-border content-stretch flex flex-col gap-[10px] items-center justify-center px-[28px] py-[20px] relative rounded-[20px] shadow-[-4px_0px_8px_0px_rgba(34,34,34,0.02),4px_0px_8px_0px_rgba(34,34,34,0.02),0px_4px_8px_0px_rgba(34,34,34,0.02)] shrink-0 w-full md:w-[300px] lg:w-[338px]">
-                  <div className="content-stretch flex flex-col gap-[28px] items-center relative shrink-0 w-full">
-                    <div className="relative shrink-0 size-[80px]">
+                    ),
+                  },
+                  {
+                    id: 3,
+                    title: "자녀에게 리포트",
+                    desc1: "분석된 부모님의 일일 건강 상태를",
+                    desc2: "자녀분의 스마트폰 앱을 통해 간편하고 보기 쉬운",
+                    desc3: "리포트로 매일 전달해 드립니다.",
+                    icon: (
                       <svg
                         className="block size-full"
                         fill="none"
@@ -676,21 +658,33 @@ export default function App() {
                         />
                         <path d={svgPaths.pd686c00} fill="#35C156" />
                       </svg>
-                    </div>
-                    <div className="content-stretch flex flex-col gap-[16px] items-center not-italic relative shrink-0 text-center w-full">
-                      <p className="font-['Pretendard',sans-serif] font-semibold md:font-bold leading-[1.3] md:leading-[21.426px] relative shrink-0 text-[16px] md:text-[15.304px] text-neutral-950 w-full">
-                        3. 자녀에게 리포트
-                      </p>
-                      <div className="font-['Pretendard',sans-serif] leading-[1.3] relative shrink-0 text-[#666666] text-[14px] w-full">
-                        <p className="mb-0">분석된 부모님의 일일 건강 상태를</p>
-                        <p>
-                          자녀분의 스마트폰 앱을 통해 간편하고 보기 쉬운
-                          리포트로 매일 전달해 드립니다.
+                    ),
+                  },
+                ].map((step) => (
+                  <div
+                    key={step.id}
+                    className="w-full md:flex-1 bg-white box-border flex flex-col gap-[10px] 
+                 items-center justify-center px-[28px] py-[20px] relative rounded-[20px]
+                 shadow-[-4px_0px_8px_0px_rgba(34,34,34,0.02),4px_0px_8px_0px_rgba(34,34,34,0.02),0px_4px_8px_0px_rgba(34,34,34,0.02)]
+                 md:max-w-[338px]"
+                  >
+                    <div className="flex flex-col gap-[28px] items-center w-full">
+                      <div className="relative shrink-0 size-[80px]">
+                        {step.icon}
+                      </div>
+                      <div className="flex flex-col gap-[16px] items-center text-center w-full">
+                        <p className="font-['Pretendard',sans-serif] font-semibold md:font-bold leading-[1.3] text-[16px] md:text-[15.304px] text-neutral-950 w-full">
+                          {step.id}. {step.title}
                         </p>
+                        <div className="font-['Pretendard',sans-serif] text-[#666666] text-[14px] leading-[1.3] w-full">
+                          <p className="mb-0">{step.desc1}</p>
+                          <p className="mb-0">{step.desc2}</p>
+                          <p>{step.desc3}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -811,7 +805,7 @@ export default function App() {
       <section className="hidden md:block relative shrink-0 w-full bg-white feature-desktop">
         <div className="size-full">
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[100px] lg:px-[312px] py-[90px] lg:py-[100px] relative w-full">
-            <div className="content-stretch flex flex-col lg:flex-row gap-[80px] lg:gap-[194px] items-start lg:items-center relative shrink-0 w-full justify-center">
+            <div className="content-stretch flex flex-col lg:flex-row gap-[80px] lg:gap-[194px] items-start lg: relative shrink-0 w-full justify-center">
               <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full lg:w-[345.739px]">
                 <div className="content-stretch flex flex-col gap-[16px] items-start leading-[1.3] not-italic relative shrink-0 w-full">
                   <div className="font-['Pretendard',sans-serif] font-bold text-[30px] lg:text-[32px] text-neutral-950 w-full">
