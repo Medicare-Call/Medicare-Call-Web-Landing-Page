@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { projectId, publicAnonKey } from "./utils/supabase/info";
 import svgPaths from "./imports/svg-liasrdp5am";
+import DesktopTestimonials from "./components/testi/DesktopTestimonials";
+import MobileTestimonials from "./components/testi/MobileTestimonials";
 
 interface ConsultationFormData {
   name: string;
@@ -84,7 +86,7 @@ export default function App() {
 
   // ⭐ 2. handleBlur 함수 추가: 포커스를 잃었을 때 (Blur) 유효성 검사
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name } = e.target;
+    const { name, value } = e.target;
     const key = name as keyof ValidationErrorsState;
 
     // 제출 시도가 있었고, 현재 이 필드에 오류 메시지가 표시되고 있다면 검사 실행
@@ -988,11 +990,57 @@ export default function App() {
       </section>
 
       {/* Testimonials Section */}
+      <section id="testimonials" className="py-[80px] bg-white overflow-hidden">
+        <h2 className="text-[26px] md:text-[32px] font-bold text-black text-center mb-[60px] leading-[1.3]">
+          <span className="md:hidden block">
+            메디케어콜과
+            <br />
+            함께하는 분들의 이야기
+          </span>
+          <span className="hidden md:block">
+            메디케어콜과 함께하는 분들의 이야기
+          </span>
+        </h2>
+
+        {/* 모바일 */}
+        <div className="md:hidden">
+          <MobileTestimonials />
+        </div>
+
+        {/* 데스크탑 */}
+        <DesktopTestimonials />
+      </section>
+
+      {/* Contact Section - 최종 수정된 부분 */}
       <section id="contact" className="bg-white relative shrink-0 w-full">
         <div className="flex flex-row items-center justify-center size-full">
           <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-4 md:px-[100px] lg:px-[440px] py-[60px] md:py-[90px] lg:py-[100px] relative w-full">
             <div className="basis-0 content-stretch flex flex-col gap-[32px] md:gap-[70px] lg:gap-[80px] grow items-center min-h-px min-w-px relative shrink-0">
-              {/* ... (헤더 생략) ... */}
+              <div className="content-stretch flex flex-col gap-[20px] md:gap-[27px] items-end relative shrink-0 w-full">
+                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[#313131] text-[26px] md:text-[30px] lg:text-[32px] text-center w-full">
+                  <p className="mb-0">더 늦기 전에,</p>
+                  <p className="mb-0 md:hidden">부모님께 스마트한 안부를</p>
+                  <p className="md:hidden">선물하세요</p>
+                  <p className="hidden md:block">
+                    부모님께 스마트한 안부를 선물하세요
+                  </p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
+                  <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[#666666] text-[14px] md:text-[18px] text-center w-full md:whitespace-pre">
+                    <span className="md:hidden">궁금하신 점을 남겨주시면</span>
+                    <span className="md:hidden">
+                      <br />
+                    </span>
+                    <span className="md:hidden">
+                      전문 컨설턴트가 친절하게 상담해 드리곘습니다.
+                    </span>
+                    <span className="hidden md:inline">
+                      궁금하신 점을 남겨주시면 전문 컨설턴트가 친절하게 상담해
+                      드리곘습니다.
+                    </span>
+                  </p>
+                </div>
+              </div>
 
               <div className="bg-neutral-50 relative rounded-[20px] md:rounded-[30px] shrink-0 w-full">
                 <div className="flex flex-row items-center size-full">
@@ -1005,11 +1053,12 @@ export default function App() {
                     >
                       <div className="content-stretch flex flex-col gap-[50px] md:gap-[50px] h-full items-start relative shrink-0 w-full">
                         <div className="content-stretch flex flex-col gap-[24px] md:gap-[36px] items-start relative shrink-0 w-full">
-                          {/* Name Field - 수정된 부분 (group 클래스 추가) */}
-                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full group">
+                          {/* Name Field - 수정 */}
+                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
                             <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>자녀분 성함 </span>
+                                {/* ⭐ 필수 텍스트 색상 조건부 변경 */}
                                 <span
                                   className={
                                     validationErrors.name
@@ -1024,20 +1073,20 @@ export default function App() {
                             <div className="bg-white h-[58px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ group-hover:border-[#35c156] 및 transition-colors 추가
-                                className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px] transition-colors group-hover:border-[#35c156]`}
+                                // ⭐ 테두리 색상 조건부 클래스 제거
+                                className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]`}
                               />
                               <div className="flex flex-row items-center size-full">
                                 <input
                                   type="text"
-                                  name="name"
+                                  name="name" // name 속성 추가
                                   value={formData.name}
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] placeholder:text-[#afafaf] ${
                                     validationErrors.name
-                                      ? "text-[#afafaf]"
-                                      : "text-black"
+                                      ? "text-[#afafaf]" // 오류 상태: 회색 텍스트
+                                      : "text-black" // 정상 상태: 검정색 텍스트
                                   }`}
                                   placeholder="성함을 입력해주세요"
                                   required
@@ -1052,11 +1101,12 @@ export default function App() {
                             )}
                           </div>
 
-                          {/* Phone Field - 수정된 부분 (group 클래스 추가) */}
-                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full group">
+                          {/* Phone Field - 수정 */}
+                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
                             <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>연락처 </span>
+                                {/* ⭐ 필수 텍스트 색상 조건부 변경 */}
                                 <span
                                   className={
                                     validationErrors.phone
@@ -1071,20 +1121,20 @@ export default function App() {
                             <div className="bg-white h-[58px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ group-hover:border-[#35c156] 및 transition-colors 추가
-                                className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px] transition-colors group-hover:border-[#35c156]`}
+                                // ⭐ 테두리 색상 조건부 클래스 제거
+                                className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]`}
                               />
                               <div className="flex flex-row items-center size-full">
                                 <input
                                   type="tel"
-                                  name="phone"
+                                  name="phone" // name 속성 추가
                                   value={formData.phone}
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] placeholder:text-[#afafaf] ${
                                     validationErrors.phone
-                                      ? "text-[#afafaf]"
-                                      : "text-black"
+                                      ? "text-[#afafaf]" // 오류 상태: 회색 텍스트
+                                      : "text-black" // 정상 상태: 검정색 텍스트
                                   }`}
                                   placeholder="'-'없이 숫자만 입력해주세요"
                                   required
@@ -1099,11 +1149,12 @@ export default function App() {
                             )}
                           </div>
 
-                          {/* Email Field - 수정된 부분 (group 클래스 추가) */}
-                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full group">
+                          {/* Email Field - 수정 */}
+                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
                             <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>이메일 </span>
+                                {/* ⭐ 필수 텍스트 색상 조건부 변경 */}
                                 <span
                                   className={
                                     validationErrors.email
@@ -1118,20 +1169,20 @@ export default function App() {
                             <div className="bg-white h-[58px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ group-hover:border-[#35c156] 및 transition-colors 추가
-                                className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px] transition-colors group-hover:border-[#35c156]`}
+                                // ⭐ 테두리 색상 조건부 클래스 제거
+                                className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]`}
                               />
                               <div className="flex flex-row items-center size-full">
                                 <input
                                   type="email"
-                                  name="email"
+                                  name="email" // name 속성 추가
                                   value={formData.email}
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] placeholder:text-[#afafaf] ${
                                     validationErrors.email
-                                      ? "text-[#afafaf]"
-                                      : "text-black"
+                                      ? "text-[#afafaf]" // 오류 상태: 회색 텍스트
+                                      : "text-black" // 정상 상태: 검정색 텍스트
                                   }`}
                                   placeholder="답변 받으실 이메일 주소 입력해주세요"
                                   required
@@ -1146,8 +1197,8 @@ export default function App() {
                             )}
                           </div>
 
-                          {/* Message Field (테두리 변경 적용) */}
-                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full group">
+                          {/* Message Field (변경 없음) */}
+                          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
                             <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>문의 내용 </span>
@@ -1157,14 +1208,13 @@ export default function App() {
                             <div className="bg-white h-[134px] md:h-[199px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ group-hover:border-[#35c156] 및 transition-colors 추가
-                                className="absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px] transition-colors group-hover:border-[#35c156]"
+                                className="absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]"
                               />
                               <div className="size-full">
                                 <textarea
-                                  name="message"
+                                  name="message" // name 속성 추가
                                   value={formData.message}
-                                  onChange={handleChange}
+                                  onChange={handleChange} // 수정된 핸들러 사용
                                   className="box-border content-stretch flex gap-[10px] h-full items-start px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] text-black placeholder:text-[#afafaf] resize-none"
                                   placeholder="서비스에 대해 궁금한 점을 자유롭게 남겨주세요."
                                 />
@@ -1173,7 +1223,6 @@ export default function App() {
                           </div>
                         </div>
 
-                        {/* ... (버튼 생략) ... */}
                         <button
                           type="submit"
                           disabled={isSubmitting}
