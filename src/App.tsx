@@ -231,7 +231,7 @@ export default function App() {
                 <img
                   alt="메디케어콜 로고"
                   className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-                  src="./images/medicare.png"
+                  src="/images/medicare.png"
                 />
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function App() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden overflow-clip relative shrink-0 size-[24px]"
             >
-              <img src="./icons/hamburger.svg" />
+              <img src="/icons/hamburger.svg" />
               <div className="absolute bottom-1/2 left-[16.67%] right-[16.67%] top-1/2">
                 <svg
                   className="block size-full"
@@ -309,7 +309,7 @@ export default function App() {
         <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-[9999] overflow-y-auto">
           <div className="flex pt-4 pb-6 px-4 justify-end">
             <img
-              src="./icons/x_mobile.svg"
+              src="/icons/x_mobile.svg"
               onClick={() => setMobileMenuOpen(false)}
               alt="닫기"
             />
@@ -345,7 +345,7 @@ export default function App() {
           <img
             alt=""
             className="absolute h-[172.74%] left-[-194.48%] max-w-none top-[-14.29%] w-[376.92%]"
-            src="./images/main.png"
+            src="/images/main.png"
           />
         </div>
         <div className="flex flex-row items-center size-full">
@@ -387,7 +387,7 @@ export default function App() {
           <img
             alt=""
             className="w-full h-full object-cover"
-            src="./images/main.png"
+            src="/images/main.png"
           />
         </div>
         <div className="content-stretch flex flex-col gap-[50px] items-center relative shrink-0 w-full min-w-[713px]px-[100px] md:py-[118px] lg:py-[138px]">
@@ -872,7 +872,7 @@ export default function App() {
                   <img
                     alt="부모님의 건강 상태와 복약 정보를 확인할 수 있는 모바일 리포트 화면"
                     className="absolute h-[160.99%] left-0 max-w-none top-0 w-[100.01%]"
-                    src="./images/parent-health-report-mobile-preview.png"
+                    src="/images/parent-health-report-mobile-preview.png"
                   />
                 </div>
               </div>
@@ -980,7 +980,7 @@ export default function App() {
                   <img
                     alt="부모님의 건강 상태와 복약 정보를 확인할 수 있는 모바일 리포트 화면"
                     className="absolute h-[147.98%] left-0 max-w-none top-0 w-[100.01%]"
-                    src="./images/parent-health-report-mobile-preview.png"
+                    src="/images/parent-health-report-mobile-preview.png"
                   />
                 </div>
               </div>
@@ -1014,7 +1014,7 @@ export default function App() {
       {/* Contact Section - 최종 수정된 부분 */}
       <section id="contact" className="bg-white relative shrink-0 w-full">
         <div className="flex flex-row items-center justify-center size-full">
-          <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-4 md:px-[100px] lg:px-[440px] py-[60px] md:py-[90px] lg:py-[100px] relative w-full">
+          <div className="content-stretch flex gap-[10px] items-center justify-center px-4 md:px-[100px] lg:w-[561px] py-[60px] box-content md:py-[90px] lg:py-[100px] relative w-full">
             <div className="basis-0 content-stretch flex flex-col gap-[32px] md:gap-[70px] lg:gap-[80px] grow items-center min-h-px min-w-px relative shrink-0">
               <div className="content-stretch flex flex-col gap-[20px] md:gap-[27px] items-end relative shrink-0 w-full">
                 <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[#313131] text-[26px] md:text-[30px] lg:text-[32px] text-center w-full">
@@ -1058,7 +1058,6 @@ export default function App() {
                             <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>자녀분 성함 </span>
-                                {/* ⭐ 필수 텍스트 색상 조건부 변경 */}
                                 <span
                                   className={
                                     validationErrors.name
@@ -1083,11 +1082,17 @@ export default function App() {
                                   value={formData.name}
                                   onChange={handleChange}
                                   onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
-                                  className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] placeholder:text-[#afafaf] ${
-                                    validationErrors.name
-                                      ? "text-[#afafaf]" // 오류 상태: 회색 텍스트
-                                      : "text-black" // 정상 상태: 검정색 텍스트
-                                  }`}
+                                  className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
+            bg-transparent
+            border border-[var(--mc-gray-2)]
+            hover:border-[var(--mc-gray-4)]
+            hover:bg-[var(--mc-gray-1)]
+            focus:border-[var(--mc-main-color)]
+            rounded-[14px]
+            outline-none
+            font-['Pretendard',sans-serif] font-medium text-[16px]
+            placeholder:text-[#afafaf]
+            ${validationErrors.name ? "text-[#afafaf]" : "text-black"}`}
                                   placeholder="성함을 입력해주세요"
                                   required
                                 />
@@ -1131,11 +1136,17 @@ export default function App() {
                                   value={formData.phone}
                                   onChange={handleChange}
                                   onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
-                                  className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] placeholder:text-[#afafaf] ${
-                                    validationErrors.phone
-                                      ? "text-[#afafaf]" // 오류 상태: 회색 텍스트
-                                      : "text-black" // 정상 상태: 검정색 텍스트
-                                  }`}
+                                  className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
+            bg-transparent
+            border border-[var(--mc-gray-2)]
+            hover:border-[var(--mc-gray-4)]
+            hover:bg-[var(--mc-gray-1)]
+            focus:border-[var(--mc-main-color)]
+            rounded-[14px]
+            outline-none
+            font-['Pretendard',sans-serif] font-medium text-[16px]
+            placeholder:text-[#afafaf]
+            ${validationErrors.name ? "text-[#afafaf]" : "text-black"}`}
                                   placeholder="'-'없이 숫자만 입력해주세요"
                                   required
                                 />
@@ -1154,7 +1165,7 @@ export default function App() {
                             <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>이메일 </span>
-                                {/* ⭐ 필수 텍스트 색상 조건부 변경 */}
+
                                 <span
                                   className={
                                     validationErrors.email
@@ -1169,21 +1180,26 @@ export default function App() {
                             <div className="bg-white h-[58px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ 테두리 색상 조건부 클래스 제거
                                 className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]`}
                               />
                               <div className="flex flex-row items-center size-full">
                                 <input
                                   type="email"
-                                  name="email" // name 속성 추가
+                                  name="email"
                                   value={formData.email}
                                   onChange={handleChange}
-                                  onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
-                                  className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] placeholder:text-[#afafaf] ${
-                                    validationErrors.email
-                                      ? "text-[#afafaf]" // 오류 상태: 회색 텍스트
-                                      : "text-black" // 정상 상태: 검정색 텍스트
-                                  }`}
+                                  onBlur={handleBlur}
+                                  className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
+            bg-transparent
+            border border-[var(--mc-gray-2)]
+            hover:border-[var(--mc-gray-4)]
+            hover:bg-[var(--mc-gray-1)]
+            focus:border-[var(--mc-main-color)]
+            rounded-[14px]
+            outline-none
+            font-['Pretendard',sans-serif] font-medium text-[16px]
+            placeholder:text-[#afafaf]
+            ${validationErrors.name ? "text-[#afafaf]" : "text-black"}`}
                                   placeholder="답변 받으실 이메일 주소 입력해주세요"
                                   required
                                 />
@@ -1215,7 +1231,15 @@ export default function App() {
                                   name="message" // name 속성 추가
                                   value={formData.message}
                                   onChange={handleChange} // 수정된 핸들러 사용
-                                  className="box-border content-stretch flex gap-[10px] h-full items-start px-[16px] py-[14px] relative w-full bg-transparent border-0 outline-none font-['Pretendard',sans-serif] font-medium text-[16px] text-black placeholder:text-[#afafaf] resize-none"
+                                  className="box-border content-stretch flex gap-[10px] h-full items-start px-[16px] py-[14px] relative w-full
+           border border-[var(--mc-gray-2)]
+           hover:bg-[var(--mc-gray-1)]
+           hover:border-[var(--mc-gray-4)]
+           focus:border-[var(--mc-main-color)]
+           outline-none
+           font-['Pretendard',sans-serif] font-medium text-[16px]
+           text-black placeholder:text-[#afafaf]
+           resize-none rounded-[14px]"
                                   placeholder="서비스에 대해 궁금한 점을 자유롭게 남겨주세요."
                                 />
                               </div>
@@ -1258,7 +1282,7 @@ export default function App() {
                     <img
                       alt="메디케어콜 로고"
                       className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-                      src="./images/medicare.png"
+                      src="/images/medicare.png"
                     />
                   </div>
                 </div>
