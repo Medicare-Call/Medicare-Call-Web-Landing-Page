@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { handle } from "hono/vercel";
-import * as kv from "./kv_store";
+import * as kv from "./kv_store.js";
 
 const app = new Hono().basePath("/api/server");
 
