@@ -57,6 +57,16 @@ const MobileTestimonials = () => {
     return () => window.clearInterval(interval);
   }, [isJumping]);
 
+  const calculateScrollTarget = (
+    targetElement: HTMLElement,
+    container: HTMLElement
+  ): number => {
+    const cardOffset = targetElement.offsetLeft;
+    const cardWidth = targetElement.offsetWidth;
+    const containerWidth = container.offsetWidth;
+    return cardOffset + cardWidth / 2 - containerWidth / 2;
+  };
+
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -69,13 +79,13 @@ const MobileTestimonials = () => {
     }
 
     const targetCard = container.querySelector(`[data-index="${index}"]`);
-    if (!targetCard) return;
+    if (!(targetCard instanceof HTMLElement)) return;
 
     if (index === JUMP_TRIGGER_INDEX_FORWARD) {
-      targetCard.scrollIntoView({
+      const scrollTarget = calculateScrollTarget(targetCard, container);
+      container.scrollTo({
+        left: scrollTarget,
         behavior: "smooth",
-        block: "nearest",
-        inline: "center",
       });
 
       const jumpTimeout = window.setTimeout(() => {
@@ -83,12 +93,9 @@ const MobileTestimonials = () => {
         const realFirstCard = container.querySelector(
           `[data-index="${INITIAL_INDEX}"]`
         );
-        if (realFirstCard) {
-          realFirstCard.scrollIntoView({
-            behavior: "auto",
-            block: "nearest",
-            inline: "center",
-          });
+        if (realFirstCard instanceof HTMLElement) {
+          const jumpTarget = calculateScrollTarget(realFirstCard, container);
+          container.scrollLeft = jumpTarget;
         }
         setIndex(INITIAL_INDEX);
       }, CARD_TRANSITION_DURATION + 100);
@@ -101,25 +108,20 @@ const MobileTestimonials = () => {
       const realFirstCard = container.querySelector(
         `[data-index="${INITIAL_INDEX}"]`
       );
-      if (realFirstCard) {
-        realFirstCard.scrollIntoView({
-          behavior: "auto",
-          block: "nearest",
-          inline: "center",
-        });
+      if (realFirstCard instanceof HTMLElement) {
+        const jumpTarget = calculateScrollTarget(realFirstCard, container);
+        container.scrollLeft = jumpTarget;
       }
       setIndex(INITIAL_INDEX);
       return;
     }
 
     if (index >= INITIAL_INDEX && index <= VISIBLE_LENGTH) {
-      if (!autoScrollPaused.current) {
-        targetCard.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "center",
-        });
-      }
+      const scrollTarget = calculateScrollTarget(targetCard, container);
+      container.scrollTo({
+        left: scrollTarget,
+        behavior: "smooth",
+      });
     }
   }, [index, isJumping]);
 
@@ -157,25 +159,19 @@ const MobileTestimonials = () => {
           const realLastCard = container.querySelector(
             `[data-index="${VISIBLE_LENGTH}"]`
           );
-          if (realLastCard) {
-            realLastCard.scrollIntoView({
-              behavior: "auto",
-              block: "nearest",
-              inline: "center",
-            });
+          if (realLastCard instanceof HTMLElement) {
+            const jumpTarget = calculateScrollTarget(realLastCard, container);
+            container.scrollLeft = jumpTarget;
           }
           setIndex(VISIBLE_LENGTH);
-        } else if (newIndex >= JUMP_TRIGGER_INDEX_FORWARD) {
+        } else if (newIndex === JUMP_TRIGGER_INDEX_FORWARD) {
           setIsJumping(true);
           const realFirstCard = container.querySelector(
             `[data-index="${INITIAL_INDEX}"]`
           );
-          if (realFirstCard) {
-            realFirstCard.scrollIntoView({
-              behavior: "auto",
-              block: "nearest",
-              inline: "center",
-            });
+          if (realFirstCard instanceof HTMLElement) {
+            const jumpTarget = calculateScrollTarget(realFirstCard, container);
+            container.scrollLeft = jumpTarget;
           }
           setIndex(INITIAL_INDEX);
         } else {
