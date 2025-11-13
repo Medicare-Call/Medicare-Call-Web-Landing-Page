@@ -88,10 +88,10 @@ const DesktopTestimonials = () => {
     if (!(targetCard instanceof HTMLElement)) return;
 
     if (index === JUMP_TRIGGER_INDEX_FORWARD) {
-      targetCard.scrollIntoView({
+      const scrollTarget = calculateScrollTarget(targetCard, container);
+      container.scrollTo({
+        left: scrollTarget,
         behavior: "smooth",
-        block: "nearest",
-        inline: "center",
       });
 
       const jumpTimeout = setTimeout(() => {
