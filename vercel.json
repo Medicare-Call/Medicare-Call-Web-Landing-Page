@@ -2,6 +2,18 @@
   "functions": {
     "api/**/*.ts": {
       "runtime": "edge"
+    },
+
+    "api/server/server.ts": {
+      "runtime": "edge"
+    },
+    "api/server/index.ts": {
+      "runtime": "edge"
+    }
+  },
+  "build": {
+    "env": {
+      "VERCEL_EDGE_RUNTIME": "1"
     }
   }
 }
