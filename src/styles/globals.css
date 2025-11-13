@@ -156,10 +156,12 @@
     @apply bg-background text-foreground;
     font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
       Roboto, sans-serif;
+    overscroll-behavior-y: none;
   }
 
   html {
     scroll-behavior: smooth;
+    overscroll-behavior-y: none;
   }
 }
 
