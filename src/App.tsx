@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { projectId, publicAnonKey } from "./utils/supabase/info";
 import svgPaths from "./imports/svg-liasrdp5am";
-import DesktopTestimonials from "./components/testi/DesktopTestimonials";
-import MobileTestimonials from "./components/testi/MobileTestimonials";
 
 interface ConsultationFormData {
   name: string;
@@ -86,7 +84,7 @@ export default function App() {
 
   // ⭐ 2. handleBlur 함수 추가: 포커스를 잃었을 때 (Blur) 유효성 검사
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
     const key = name as keyof ValidationErrorsState;
 
     // 제출 시도가 있었고, 현재 이 필드에 오류 메시지가 표시되고 있다면 검사 실행

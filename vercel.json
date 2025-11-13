@@ -1,19 +1,8 @@
 {
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "edge"
-    },
-
-    "api/server/server.ts": {
-      "runtime": "edge"
-    },
-    "api/server/index.ts": {
-      "runtime": "edge"
+  "rewrites": [
+    {
+      "source": "/api/server/:path*",
+      "destination": "/api/server/index"
     }
-  },
-  "build": {
-    "env": {
-      "VERCEL_EDGE_RUNTIME": "1"
-    }
-  }
+  ]
 }
