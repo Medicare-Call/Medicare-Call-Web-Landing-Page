@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { projectId, publicAnonKey } from "./utils/supabase/info";
 import svgPaths from "./imports/svg-liasrdp5am";
+import DesktopTestimonials from "./components/testi/DesktopTestimonials";
+import MobileTestimonials from "./components/testi/MobileTestimonials";
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -12,28 +14,6 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const testimonialRef = useRef<HTMLDivElement>(null);
-
-  // Auto scroll testimonials every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % 3);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Scroll to current testimonial
-  useEffect(() => {
-    if (testimonialRef.current) {
-      const scrollWidth = testimonialRef.current.scrollWidth / 3;
-      testimonialRef.current.scrollTo({
-        left: scrollWidth * currentTestimonial,
-        behavior: "smooth",
-      });
-    }
-  }, [currentTestimonial]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,7 +86,7 @@ export default function App() {
       const isInFeatures = featureParts.some((el) => {
         if (!el) return false;
         const rect = el.getBoundingClientRect();
-        return rect.top <= window.innerHeight * 0.4 && rect.bottom >= 80;
+        return rect.top <= window.innerHeight && rect.bottom >= 100;
       });
 
       if (isInFeatures) {
@@ -224,7 +204,6 @@ export default function App() {
           </div>
         </div>
       </div>
-
       {mobileMenuOpen && (
         <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-[9999] overflow-y-auto">
           <div className="flex pt-4 pb-6 px-4 justify-end">
@@ -258,7 +237,6 @@ export default function App() {
           </div>
         </div>
       )}
-
       {/* Hero Section - Mobile */}
       <section className="md:hidden relative w-full overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -300,7 +278,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* Hero Section - Desktop */}
       <section className="hidden md:block relative w-full overflow-hidden">
         <div className="absolute h-[550px] lg:h-[600px] left-0 top-0 w-full overflow-hidden pointer-events-none z-0">
@@ -335,7 +312,6 @@ export default function App() {
           </button>
         </div>
       </section>
-
       {/* Problem Section - Mobile */}
       <section
         id="problem"
@@ -425,7 +401,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* Problem Section - Desktop */}
       <section className="hidden md:block relative shrink-0 w-full bg-white">
         <div className="size-full">
@@ -511,7 +486,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* How It Works Section */}
       <section id="features" className="bg-[#f4fcf8] relative shrink-0 w-full">
         <div className="size-full">
@@ -690,7 +664,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* App Feature Section - Mobile */}
       <section className="md:hidden bg-neutral-50 relative size-full feature-mobile">
         <div className="flex flex-row items-center size-full">
@@ -800,7 +773,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* App Feature Section - Desktop */}
       <section className="hidden md:block relative shrink-0 w-full bg-white feature-desktop">
         <div className="size-full">
@@ -910,174 +882,25 @@ export default function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section
-        id="testimonials"
-        className="box-border content-stretch flex flex-col gap-[10px] items-start py-[60px] md:py-[90px] lg:py-[100px] relative shrink-0 w-full bg-white overflow-hidden"
-      >
-        <div className="content-stretch flex flex-col gap-[32px] md:gap-[42px] items-center relative shrink-0 w-full">
-          <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[26px] md:text-[30px] lg:text-[32px] text-black text-center w-full px-4 md:px-[100px]">
-            <p className="mb-0 md:hidden">메디케어콜과</p>
-            <p className="md:hidden">함께하는 분들의 이야기</p>
-            <p className="hidden md:block">
-              메디케어콜과 함께하는 분들의 이야기
-            </p>
-          </div>
+      <section id="testimonials" className="py-[80px] bg-white overflow-hidden">
+        <h2 className="text-[26px] md:text-[32px] font-bold text-black text-center mb-[60px] leading-[1.3]">
+          <span className="md:hidden block">
+            메디케어콜과
+            <br />
+            함께하는 분들의 이야기
+          </span>
+          <span className="hidden md:block">
+            메디케어콜과 함께하는 분들의 이야기
+          </span>
+        </h2>
 
-          {/* Mobile: Horizontal Scroll Testimonials */}
-          <div className="md:hidden relative w-full">
-            <div
-              className="flex gap-[12px] overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth px-4"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              onScroll={(e) => {
-                const scrollLeft = e.currentTarget.scrollLeft;
-                const cardWidth = e.currentTarget.scrollWidth / 3;
-                const newIndex = Math.round(scrollLeft / cardWidth);
-                setCurrentTestimonial(newIndex);
-              }}
-            >
-              {/* Testimonial 1 */}
-              <div className="bg-[#ececec] box-border content-stretch flex flex-col gap-[24px] items-end justify-end leading-[1.3] not-italic px-[16px] py-[24px] relative rounded-[11.13px] shrink-0 text-[14px] w-[280px] snap-center">
-                <p className="font-['Pretendard',sans-serif] font-medium relative shrink-0 text-[#666666] w-full">
-                  "지방에 계신 어머니와 매일 통화하기가 어려웠는데, 이젠 매일
-                  아침 앱으로 컨디션을 확인하니 마음이 놓여요. 얼마 전엔 AI가
-                  어지럽다는 말씀을 캐치해서 바로 연락드릴 수 있었어요. 정말
-                  든든한 아들 노릇을 대신해주는 것 같아요."
-                </p>
-                <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#afafaf] text-[12px] text-nowrap whitespace-pre">
-                  - 40대 직장인 김 O O 님 -
-                </p>
-              </div>
-
-              {/* Testimonial 2 - Highlighted */}
-              <div className="bg-[#35c156] box-border content-stretch flex flex-col gap-[24px] items-end justify-end leading-[1.3] not-italic px-[16px] py-[24px] relative rounded-[11.13px] shadow-[-4px_0px_16px_0px_rgba(34,34,34,0.04),4px_0px_16px_0px_rgba(34,34,34,0.04),0px_4px_16px_0px_rgba(34,34,34,0.04)] shrink-0 text-[14px] w-[280px] snap-center">
-                <p className="font-['Pretendard',sans-serif] relative shrink-0 text-white w-full">
-                  "지방에 계신 어머니와 매일 통화하기가 어려웠는데, 이젠 매일
-                  아침 앱으로 컨디션을 확인하니 마음이 놓여요. 얼마 전엔 AI가
-                  어지럽다는 말씀을 캐치해서 바로 연락드릴 수 있었어요. 정말
-                  든든한 아들 노릇을 대신해주는 것 같아요."
-                </p>
-                <p className="font-['Pretendard',sans-serif] font-medium relative shrink-0 text-[#e6faef] text-nowrap whitespace-pre">
-                  - 40대 직장인 김 O O 님 -
-                </p>
-              </div>
-
-              {/* Testimonial 3 */}
-              <div className="bg-[#ececec] box-border content-stretch flex flex-col gap-[24px] items-end justify-end leading-[1.3] not-italic px-[16px] py-[24px] relative rounded-[11.13px] shrink-0 text-[14px] w-[280px] snap-center">
-                <p className="font-['Pretendard',sans-serif] font-medium relative shrink-0 text-[#666666] w-full">
-                  "지방에 계신 어머니와 매일 통화하기가 어려웠는데, 이젠 매일
-                  아침 앱으로 컨디션을 확인하니 마음이 놓여요. 얼마 전엔 AI가
-                  어지럽다는 말씀을 캐치해서 바로 연락드릴 수 있었어요. 정말
-                  든든한 아들 노릇을 대신해주는 것 같아요."
-                </p>
-                <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#afafaf] text-[12px] text-nowrap whitespace-pre">
-                  - 40대 직장인 김 O O 님 -
-                </p>
-              </div>
-            </div>
-
-            {/* Mobile Pagination Dots */}
-            <div className="flex gap-2 justify-center mt-6">
-              {[0, 1, 2].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setCurrentTestimonial(index);
-                    const container = document.querySelector(
-                      ".md\\:hidden .overflow-x-auto"
-                    ) as HTMLElement;
-                    if (container) {
-                      const cardWidth = 280 + 12; // card width + gap
-                      container.scrollTo({
-                        left: cardWidth * index,
-                        behavior: "smooth",
-                      });
-                    }
-                  }}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    currentTestimonial === index
-                      ? "bg-[#35c156] w-6"
-                      : "bg-[#d2d2d2]"
-                  }`}
-                  aria-label={`후기 ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop: Horizontal Scroll Testimonials */}
-          <div className="hidden md:block relative w-full">
-            <div className="max-w-[1400px] mx-auto px-[100px]">
-              <div
-                ref={testimonialRef}
-                className="flex gap-[40px] overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-                onScroll={(e) => {
-                  const scrollLeft = e.currentTarget.scrollLeft;
-                  const cardWidth = e.currentTarget.scrollWidth / 3;
-                  const newIndex = Math.round(scrollLeft / cardWidth);
-                  if (newIndex !== currentTestimonial) {
-                    setCurrentTestimonial(newIndex);
-                  }
-                }}
-              >
-                {/* Testimonial 1 - Lighter */}
-                <div className="bg-[#ececec] box-border content-stretch flex flex-col gap-[30px] md:gap-[40px] items-end justify-end leading-[1.3] not-italic px-[30px] md:px-[36px] py-[35px] md:py-[40px] relative rounded-[11.13px] shrink-0 w-[350px] lg:w-[400px] snap-center">
-                  <p className="font-['Pretendard',sans-serif] font-medium relative shrink-0 text-[#666666] text-[14px] md:text-[16px] w-full">
-                    "지방에 계신 어머니와 매일 통화하기가 어려웠는데, 이젠 매일
-                    아침 앱으로 컨디션을 확인하니 마음이 놓여요. 얼마 전엔 AI가
-                    어지럽다는 말씀을 캐치해서 바로 연락드릴 수 있었어요. 정말
-                    든든한 아들 노릇을 대신해주는 것 같아요."
-                  </p>
-                  <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#afafaf] text-[12px] text-nowrap whitespace-pre">
-                    - 40대 직장인 김 O O 님 -
-                  </p>
-                </div>
-
-                {/* Testimonial 2 - Highlighted */}
-                <div className="bg-[#35c156] box-border content-stretch flex flex-col gap-[30px] md:gap-[40px] items-end justify-end leading-[1.3] not-italic px-[30px] md:px-[36px] py-[35px] md:py-[40px] relative rounded-[11.13px] shadow-[-4px_0px_16px_0px_rgba(34,34,34,0.04),4px_0px_16px_0px_rgba(34,34,34,0.04),0px_4px_16px_0px_rgba(34,34,34,0.04)] shrink-0 w-[350px] lg:w-[400px] snap-center">
-                  <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[18px] md:text-[20px] text-white w-full">
-                    "지방에 계신 어머니와 매일 통화하기가 어려웠는데, 이젠 매일
-                    아침 앱으로 컨디션을 확인하니 마음이 놓여요. 얼마 전엔 AI가
-                    어지럽다는 말씀을 캐치해서 바로 연락드릴 수 있었어요. 정말
-                    든든한 아들 노릇을 대신해주는 것 같아요."
-                  </p>
-                  <p className="font-['Pretendard',sans-serif] font-medium relative shrink-0 text-[#e6faef] text-[14px] md:text-[16px] text-nowrap whitespace-pre">
-                    - 40대 직장인 김 O O 님 -
-                  </p>
-                </div>
-
-                {/* Testimonial 3 - Lighter */}
-                <div className="bg-[#ececec] box-border content-stretch flex flex-col gap-[30px] md:gap-[40px] items-end justify-end leading-[1.3] not-italic px-[30px] md:px-[36px] py-[35px] md:py-[40px] relative rounded-[11.13px] shrink-0 w-[350px] lg:w-[400px] snap-center">
-                  <p className="font-['Pretendard',sans-serif] font-medium relative shrink-0 text-[#666666] text-[14px] md:text-[16px] w-full">
-                    "지방에 계신 어머니와 매일 통화하기가 어려웠는데, 이젠 매일
-                    아침 앱으로 컨디션을 확인하니 마음이 놓여요. 얼마 전엔 AI가
-                    어지럽다는 말씀을 캐치해서 바로 연락드릴 수 있었어요. 정말
-                    든든한 아들 노릇을 대신해주는 것 같아요."
-                  </p>
-                  <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#afafaf] text-[12px] text-nowrap whitespace-pre">
-                    - 40대 직장인 김 O O 님 -
-                  </p>
-                </div>
-              </div>
-
-              {/* Desktop Pagination Dots */}
-              <div className="flex gap-2 justify-center mt-6">
-                {[0, 1, 2].map((index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      currentTestimonial === index
-                        ? "bg-[#35c156] w-6"
-                        : "bg-[#d2d2d2]"
-                    }`}
-                    aria-label={`후기 ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* 모바일 */}
+        <div className="md:hidden">
+          <MobileTestimonials />
         </div>
+
+        {/* 데스크탑 */}
+        <DesktopTestimonials />
       </section>
 
       {/* Contact Section */}
@@ -1267,7 +1090,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-neutral-50 relative shrink-0 w-full">
         <div className="size-full">
