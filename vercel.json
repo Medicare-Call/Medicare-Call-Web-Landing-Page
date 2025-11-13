@@ -1,6 +1,6 @@
 {
   "functions": {
-    "src/supabase/functions/server/**/*.ts": {
+    "api/**/*.ts": {
       "runtime": "edge"
     }
   }
