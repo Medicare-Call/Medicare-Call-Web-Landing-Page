@@ -1,8 +1,10 @@
-import { Hono } from "npm:hono";
-import { cors } from "npm:hono/cors";
-import { logger } from "npm:hono/logger";
-import * as kv from "./kv_store.ts";
-const app = new Hono();
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { logger } from "hono/logger";
+import { handle } from "hono/vercel";
+import * as kv from "./kv_store";
+
+const app = new Hono().basePath("/api/server");
 
 // Enable logger
 app.use("*", logger(console.log));
@@ -76,4 +78,4 @@ app.post("/make-server-6e07f166/consultations", async (c) => {
   }
 });
 
-Deno.serve(app.fetch);
+export default handle(app);
