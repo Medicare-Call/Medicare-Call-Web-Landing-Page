@@ -804,7 +804,7 @@ export default function App() {
                   {/* Feature 3 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0 w-full">
                     <div className="overflow-clip relative shrink-0 size-[22px]">
-                      <img src="/icons/calender.svg" />
+                      <img src="/icons/calendar.svg" />
                     </div>
                     <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
@@ -867,7 +867,7 @@ export default function App() {
                   {/* Feature 3 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0 w-full">
                     <div className="overflow-clip relative shrink-0 size-[22px]">
-                      <img src="/icons/calender.svg" />
+                      <img src="/icons/calendar.svg" />
                     </div>
                     <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
