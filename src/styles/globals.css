@@ -7,6 +7,68 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* T01 */
+  --t01-font-size: 36px;
+  --t01-line-height: 1.4;
+  --t01-weight: 700;
+
+  /* T02 */
+  --t02-font-size: 32px;
+  --t02-line-height: 1.3;
+  --t02-weight: 700;
+
+  /* T03 */
+  --t03-font-size: 26px;
+  --t03-line-height: 1.3;
+
+  --t03-b-weight: 700;
+  --t03-sb-weight: 600;
+
+  /* T04 */
+  --t04-font-size: 24px;
+  --t04-line-height: 1.3;
+
+  --t04-b-weight: 700;
+  --t04-sb-weight: 600;
+
+  /* T05 */
+  --t05-font-size: 20px;
+  --t05-line-height: 1.3;
+  --t05-sb-weight: 600;
+
+  /* ===== B01 ===== */
+  --b01-font-size: 18px;
+  --b01-line-height: 1.3;
+
+  --b01-b-weight: 700;
+  --b01-sb-weight: 600;
+  --b01-m-weight: 500;
+
+  /* ===== B02 ===== */
+  --b02-font-size: 16px;
+  --b02-line-height: 1.3;
+
+  --b02-b-weight: 700;
+  --b02-sb-weight: 600;
+  --b02-m-weight: 500;
+  --b02-r-weight: 400;
+
+  /* ===== B03 ===== */
+  --b03-font-size: 14px;
+  --b03-line-height: 1.3;
+
+  --b03-b-weight: 700;
+  --b03-sb-weight: 600;
+  --b03-m-weight: 500;
+  --b03-r-weight: 400;
+
+  /* ===== C01 (Caption) ===== */
+  --c01-font-size: 12px;
+  --c01-line-height: 1.3;
+
+  --c01-m-weight: 500;
+  --c01-r-weight: 400;
+
   --font-size: 16px;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
@@ -22,7 +84,7 @@
   --muted-foreground: #717182;
   --accent: #e9ebef;
   --accent-foreground: #030213;
-  --destructive: #d4183d;
+  --destructive: #ff4949;
   --destructive-foreground: #ffffff;
   --border: rgba(0, 0, 0, 0.1);
   --input: transparent;
