@@ -780,31 +780,13 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="content-stretch flex flex-col gap-[16px] items-center justify-center relative shrink-0 w-[249.398px]">
+                <div className="content-stretch flex flex-col gap-[16px] items-center justify-center relative shrink-0">
                   {/* Feature 1 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0">
                     <div className="relative shrink-0 size-[22px]">
-                      <svg
-                        className="block size-full"
-                        fill="none"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 22 22"
-                      >
-                        <circle
-                          cx="11.4781"
-                          cy="10.5217"
-                          fill="#E6FAEF"
-                          r="7.65217"
-                        />
-                        <path
-                          d={svgPaths.pc334d40}
-                          stroke="#35C156"
-                          strokeLinecap="round"
-                          strokeWidth="1.43478"
-                        />
-                      </svg>
+                      <img src="/icons/check.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
                       오늘의 컨디션, 식사, 복약 정보 요약
                     </p>
                   </div>
@@ -812,28 +794,9 @@ export default function App() {
                   {/* Feature 2 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0">
                     <div className="relative shrink-0 size-[22px]">
-                      <svg
-                        className="block size-full"
-                        fill="none"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 22 22"
-                      >
-                        <path d={svgPaths.p16213500} fill="#E6FAEF" />
-                        <path
-                          d="M11 7.6522V12.4348"
-                          stroke="#35C156"
-                          strokeLinecap="round"
-                          strokeWidth="0.956522"
-                        />
-                        <path
-                          d="M11 14.3478V14.3479"
-                          stroke="#35C156"
-                          strokeLinecap="round"
-                          strokeWidth="0.956522"
-                        />
-                      </svg>
+                      <img src="/icons/warning.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
                       AI가 감지한 건강 위험 신호 즉시 알림
                     </p>
                   </div>
@@ -841,16 +804,9 @@ export default function App() {
                   {/* Feature 3 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0 w-full">
                     <div className="overflow-clip relative shrink-0 size-[22px]">
-                      <div className="absolute bg-[#e6faef] h-[11.478px] left-[3.83px] rounded-[1.913px] top-[5.74px] w-[15.304px]" />
-                      <div className="absolute bg-[#89e38b] left-[5.74px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[8.61px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[11.48px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[14.35px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[17.22px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-black h-[1.913px] left-[16.26px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
-                      <div className="absolute bg-black h-[1.913px] left-[5.74px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
+                      <img src="/icons/calendar.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
                     </p>
                   </div>
@@ -891,25 +847,7 @@ export default function App() {
                   {/* Feature 1 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0">
                     <div className="relative shrink-0 size-[22px]">
-                      <svg
-                        className="block size-full"
-                        fill="none"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 22 22"
-                      >
-                        <circle
-                          cx="11.4781"
-                          cy="10.5217"
-                          fill="var(--mc-main-g100)"
-                          r="7.65217"
-                        />
-                        <path
-                          d={svgPaths.pc334d40}
-                          stroke="var(--mc-main-color)"
-                          strokeLinecap="round"
-                          strokeWidth="1.43478"
-                        />
-                      </svg>
+                      <img src="/icons/check.svg" />
                     </div>
                     <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       오늘의 컨디션, 식사, 복약 정보 요약
@@ -919,29 +857,7 @@ export default function App() {
                   {/* Feature 2 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0">
                     <div className="relative shrink-0 size-[22px]">
-                      <svg
-                        className="block size-full"
-                        fill="none"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 22 22"
-                      >
-                        <path
-                          d={svgPaths.p16213500}
-                          fill="var(--mc-main-g100)"
-                        />
-                        <path
-                          d="M11 7.6522V12.4348"
-                          stroke="var(--mc-main-color)"
-                          strokeLinecap="round"
-                          strokeWidth="0.956522"
-                        />
-                        <path
-                          d="M11 14.3478V14.3479"
-                          stroke="var(--mc-main-color)"
-                          strokeLinecap="round"
-                          strokeWidth="0.956522"
-                        />
-                      </svg>
+                      <img src="/icons/warning.svg" />
                     </div>
                     <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       AI가 감지한 건강 위험 신호 즉시 알림
@@ -951,14 +867,7 @@ export default function App() {
                   {/* Feature 3 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0 w-full">
                     <div className="overflow-clip relative shrink-0 size-[22px]">
-                      <div className="absolute bg-[var(--mc-main-g100)] h-[11.478px] left-[3.83px] rounded-[1.913px] top-[5.74px] w-[15.304px]" />
-                      <div className="absolute bg-[var(--mc-main-g200)] left-[5.74px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[var(--mc-main-g200)] left-[8.61px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[var(--mc-main-g200)] left-[11.48px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[var(--mc-main-g200)] left-[14.35px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[var(--mc-main-g200)] left-[17.22px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[var(--mc-gray-10)] h-[1.913px] left-[16.26px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
-                      <div className="absolute bg-[var(--mc-gray-10)] h-[1.913px] left-[5.74px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
+                      <img src="/icons/calendar.svg" />
                     </div>
                     <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
