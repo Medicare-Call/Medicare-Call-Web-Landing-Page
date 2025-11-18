@@ -17,7 +17,6 @@ interface ValidationErrorsState {
   email: string;
 }
 
-// 유효성 검사 함수 (변경 없음)
 const validateForm = (data: ConsultationFormData) => {
   const errors: Record<keyof ConsultationFormData, string> = {
     name: "",
@@ -57,10 +56,8 @@ export default function App() {
       email: "",
     });
 
-  // ⭐ 1. 새로운 상태 추가: 폼 제출 시도가 있었는지 추적
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  // handleChange 함수 (실시간 유효성 검사 로직 제거됨)
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -72,29 +69,24 @@ export default function App() {
       [key]: value,
     }));
 
-    // ⭐ 입력 시, 이미 제출 시도가 있었다면 해당 필드의 오류를 초기화
     if (
       hasSubmitted &&
       (key === "name" || key === "phone" || key === "email")
     ) {
       setValidationErrors((prevErrors) => ({
         ...prevErrors,
-        [key]: "", // 입력이 시작되면 오류 메시지 숨김
+        [key]: "",
       }));
     }
   };
 
-  // ⭐ 2. handleBlur 함수 추가: 포커스를 잃었을 때 (Blur) 유효성 검사
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name } = e.target;
     const key = name as keyof ValidationErrorsState;
 
-    // 제출 시도가 있었고, 현재 이 필드에 오류 메시지가 표시되고 있다면 검사 실행
     if (hasSubmitted) {
-      // 현재 formData 상태 (업데이트된 값 포함)를 사용하여 전체 유효성 검사를 실행
       const allErrors = validateForm(formData);
 
-      // 해당 필드의 오류 메시지만 업데이트
       setValidationErrors((prevErrors) => ({
         ...prevErrors,
         [key]: allErrors[key] || "",
@@ -102,11 +94,9 @@ export default function App() {
     }
   };
 
-  // 3. handleSubmit 함수 수정
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ⭐ 제출 시도 상태를 true로 설정
     setHasSubmitted(true);
 
     const allErrors = validateForm(formData);
@@ -119,7 +109,7 @@ export default function App() {
     setValidationErrors(requiredErrors);
 
     if (Object.values(requiredErrors).some((error) => error)) {
-      return; // 오류가 있으면 제출 중단
+      return;
     }
 
     setIsSubmitting(true);
@@ -142,7 +132,7 @@ export default function App() {
         alert("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
         setFormData({ name: "", phone: "", email: "", message: "" });
         setValidationErrors({ name: "", phone: "", email: "" });
-        setHasSubmitted(false); // 성공 시 상태 초기화
+        setHasSubmitted(false);
       } else {
         alert(result.error || "상담 신청 중 오류가 발생했습니다.");
       }
@@ -219,7 +209,6 @@ export default function App() {
   return (
     <div className="relative bg-neutral-50 min-h-screen">
       {/* GNB - Sticky Header */}
-      {/* ... (GNB 생략) ... */}
       <div className="backdrop-blur-sm backdrop-filter bg-[rgba(255,255,255,0.7)] shrink-0 sticky top-0 w-full z-50">
         <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[16px] py-[19px] md:py-[12px] md:px-[60px] lg:px-[120px] relative w-full">
           <div className="content-stretch flex items-center justify-between relative shrink-0 w-full mx-auto">
@@ -254,7 +243,7 @@ export default function App() {
                     className={`font-['Pretendard',sans-serif] text-[14px] leading-[1.3] whitespace-pre transition-colors ${
                       activeSection === item.id
                         ? "text-black font-semibold"
-                        : "text-[#666666]"
+                        : "text-[var(--mc-gray-5)]"
                     }`}
                   >
                     {item.label}
@@ -278,7 +267,7 @@ export default function App() {
                 >
                   <path
                     d="M0.999806 0.999806H16.9967"
-                    stroke="#666666"
+                    stroke="var(--mc-gray-5)"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="1.99961"
@@ -294,7 +283,7 @@ export default function App() {
                 >
                   <path
                     d="M0.999806 0.999806H16.9967"
-                    stroke="#666666"
+                    stroke="var(--mc-gray-5)"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="1.99961"
@@ -339,7 +328,6 @@ export default function App() {
         </div>
       )}
       {/* Hero Section - Mobile */}
-      {/* ... (Hero Section 생략) ... */}
       <section className="md:hidden relative w-full overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img
@@ -357,7 +345,7 @@ export default function App() {
                   <p className="mb-0">메디가 매일 부모님</p>
                   <p>건강을 챙깁니다</p>
                 </div>
-                <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[0] not-italic relative shrink-0 text-[#afafaf] text-[14px] text-center w-[249px]">
+                <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-3)] text-[14px] text-center w-[249px]">
                   <div className="leading-[1.3] relative shrink-0 w-[239px]">
                     <p className="mb-0">깜빡 잊으시는 부모님,</p>
                     <p>매번 챙겨드리기 힘든 바쁜 일상</p>
@@ -396,7 +384,7 @@ export default function App() {
               <p className="mb-0">바쁜 당신을 대신해</p>
               <p>메디가 매일 부모님 건강을 챙깁니다</p>
             </div>
-            <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[#afafaf] text-[18px] text-center text-nowrap whitespace-pre">
+            <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-3)] text-[18px] text-center text-nowrap whitespace-pre">
               <p className="relative shrink-0">
                 깜빡 잊으시는 부모님, 매번 챙겨드리기 힘든 바쁜 일상
               </p>
@@ -407,7 +395,7 @@ export default function App() {
           </div>
           <button
             onClick={() => scrollToSection("contact")}
-            className="bg-[#35c156] box-border content-stretch flex gap-[10px] items-center justify-center px-[26px] py-[16px] relative rounded-[10px] shrink-0 hover:bg-[#00a350] transition-all duration-300 cursor-pointer border-none"
+            className="bg-[var(--mc-main-color)] box-border content-stretch flex gap-[10px] items-center justify-center px-[26px] py-[16px] relative rounded-[10px] shrink-0 hover:bg-[var(--mc-main-g500)] transition-all duration-300 cursor-pointer border-none"
           >
             <p className="font-['Pretendard',sans-serif] font-semibold leading-[1.3] not-italic relative shrink-0 text-[20px] text-neutral-50 text-nowrap whitespace-pre">
               지금 바로 상담 신청하기
@@ -416,7 +404,6 @@ export default function App() {
         </div>
       </section>
       {/* Problem Section - Mobile */}
-      {/* ... (Problem Section 생략) ... */}
       <section
         id="problem"
         className="md:hidden relative shrink-0 w-full bg-white"
@@ -430,7 +417,7 @@ export default function App() {
                   <p className="mb-0">혹시, 이런 걱정 하고</p>
                   <p>계신가요?</p>
                 </div>
-                <div className="font-['Pretendard',sans-serif] text-[#666666] text-[14px] w-full">
+                <div className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] text-[14px] w-full">
                   <p className="mb-0">부모님을 사랑하는 마음만큼,</p>
                   <p className="mb-0">현실의 벽은 높기만 합니다.</p>
                   <p className="mb-0">
@@ -489,10 +476,10 @@ export default function App() {
                           <p>{card.title2}</p>
                         </div>
                         <div className="flex flex-col gap-[8px] items-start">
-                          <p className="text-[#d2d2d2] text-[14px]">
+                          <p className="text-[var(--mc-gray-2)] text-[14px]">
                             {card.subtitle}
                           </p>
-                          <p className="text-[#10d266] text-[32px] font-bold">
+                          <p className="text-[var(--mc-main-color)] text-[32px] font-bold">
                             {card.value}
                           </p>
                         </div>
@@ -506,13 +493,12 @@ export default function App() {
         </div>
       </section>
       {/* Problem Section - Desktop */}
-      {/* ... (Problem Section Desktop 생략) ... */}
       <section className="hidden md:block relative shrink-0 w-full bg-white">
         <div className="size-full">
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[100px] lg:px-[192px] py-[100px] lg:py-[120px] relative w-full">
             <div className="content-stretch flex flex-col gap-[70px] lg:gap-[79px] items-center relative shrink-0 w-full">
               <div className="content-stretch flex flex-col gap-[27px] items-start relative shrink-0 w-full max-w-[432px]">
-                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[#313131] text-[30px] lg:text-[32px] text-center w-full">
+                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-8)] text-[30px] lg:text-[32px] text-center w-full">
                   <p>혹시, 이런 걱정 하고 계신가요?</p>
                 </div>
                 <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[18px] text-center w-full">
@@ -526,7 +512,6 @@ export default function App() {
               </div>
 
               <div className="content-stretch flex flex-row gap-[33px] items-stretch justify-center relative shrink-0 w-full">
-                {/* Card 공통 스타일 변수화 */}
                 {[
                   {
                     img: "./images/elderly-parent-alone-at-home-desktop.png",
@@ -576,10 +561,10 @@ export default function App() {
                         <p>{card.title2}</p>
                       </div>
                       <div className={"flex flex-col gap-[8px] items-start"}>
-                        <p className="text-[#d2d2d2] text-[14px]">
+                        <p className="text-[var(--mc-gray-2)] text-[14px]">
                           {card.subtitle}
                         </p>
-                        <p className="text-[#10d266] text-[40px] font-bold whitespace-pre-line">
+                        <p className="text-[var(--mc-main-color)] text-[40px] font-bold whitespace-pre-line">
                           {card.value}
                         </p>
                       </div>
@@ -592,13 +577,12 @@ export default function App() {
         </div>
       </section>
       {/* How It Works Section */}
-      {/* ... (How It Works Section 생략) ... */}
       <section id="features" className="bg-[#f4fcf8] relative shrink-0 w-full">
         <div className="size-full">
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-4 md:px-[100px] lg:px-[182px] py-[60px] md:py-[60px] lg:py-[70px] relative w-full">
             <div className="content-stretch flex flex-col gap-[52px] md:gap-[70px] lg:gap-[80px] items-center relative shrink-0 w-full">
               <div className="content-stretch flex flex-col gap-[20px] md:gap-[27px] items-end relative shrink-0 w-full">
-                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[#313131] text-[26px] md:text-[30px] lg:text-[32px] text-center w-full">
+                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-8)] text-[26px] md:text-[30px] lg:text-[32px] text-center w-full">
                   <p className="mb-0 md:hidden">메디케어콜 AI가</p>
                   <p className="mb-0 md:hidden">똑똑하게 부모님과</p>
                   <p className="md:hidden">소통합니다.</p>
@@ -641,7 +625,10 @@ export default function App() {
                         preserveAspectRatio="none"
                         viewBox="0 0 80 80"
                       >
-                        <path d={svgPaths.p16ce8c00} fill="#35C156" />
+                        <path
+                          d={svgPaths.p16ce8c00}
+                          fill="var(--mc-main-color)"
+                        />
                       </svg>
                     ),
                   },
@@ -654,7 +641,7 @@ export default function App() {
                       "'아프다', '외롭다' 같은 위험 신호를 즉시 감지합니다.",
                     icon: (
                       <div className="overflow-clip relative shrink-0 size-[80px]">
-                        <div className="absolute bg-[#e6faef] h-[62.136px] left-[18.64px] rounded-[5.649px] top-[8.54px] w-[43.495px]" />
+                        <div className="absolute bg-[var(--mc-main-g100)] h-[62.136px] left-[18.64px] rounded-[5.649px] top-[8.54px] w-[43.495px]" />
                         <div className="absolute left-[38.06px] size-[33.814px] top-[30.29px]">
                           <svg
                             className="block size-full"
@@ -668,7 +655,7 @@ export default function App() {
                               fill="white"
                               fillOpacity="0.1"
                               r="14.7396"
-                              stroke="#35C156"
+                              stroke="var(--mc-main-color)"
                               strokeWidth="4.33517"
                             />
                           </svg>
@@ -681,7 +668,7 @@ export default function App() {
                           >
                             <path
                               d="M0.776699 0.776699H31.8447"
-                              stroke="#AAEFAC"
+                              stroke="var(--mc-main-g100)"
                               strokeLinecap="round"
                               strokeWidth="1.5534"
                             />
@@ -695,7 +682,7 @@ export default function App() {
                           >
                             <path
                               d="M0.776699 0.776699H24.8544"
-                              stroke="#AAEFAC"
+                              stroke="var(--mc-main-g100)"
                               strokeLinecap="round"
                               strokeWidth="1.5534"
                             />
@@ -709,7 +696,7 @@ export default function App() {
                           >
                             <path
                               d="M0.776699 0.776699H13.9806"
-                              stroke="#AAEFAC"
+                              stroke="var(--mc-main-g100)"
                               strokeLinecap="round"
                               strokeWidth="1.5534"
                             />
@@ -733,10 +720,13 @@ export default function App() {
                       >
                         <path
                           d={svgPaths.p26c6f700}
-                          stroke="#35C156"
+                          stroke="var(--mc-main-color)"
                           strokeWidth="9.29461"
                         />
-                        <path d={svgPaths.pd686c00} fill="#35C156" />
+                        <path
+                          d={svgPaths.pd686c00}
+                          fill="var(--mc-main-color)"
+                        />
                       </svg>
                     ),
                   },
@@ -756,7 +746,7 @@ export default function App() {
                         <p className="font-['Pretendard',sans-serif] font-semibold md:font-bold leading-[1.3] text-[16px] md:text-[15.304px] text-neutral-950 w-full">
                           {step.id}. {step.title}
                         </p>
-                        <div className="font-['Pretendard',sans-serif] text-[#666666] text-[14px] leading-[1.3] w-full">
+                        <div className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] text-[14px] leading-[1.3] w-full">
                           <p className="mb-0">{step.desc1}</p>
                           <p className="mb-0">{step.desc2}</p>
                           <p>{step.desc3}</p>
@@ -782,7 +772,7 @@ export default function App() {
                     <p className="mb-0">손안에서 확인하는</p>
                     <p>부모님 건강 리포트</p>
                   </div>
-                  <div className="font-['Pretendard',sans-serif] leading-[1.3] relative shrink-0 text-[#666666] text-[14px] w-full">
+                  <div className="font-['Pretendard',sans-serif] leading-[1.3] relative shrink-0 text-[var(--mc-gray-5)] text-[14px] w-full">
                     <p className="mb-0">
                       바쁜 일상 속에서도 터치 한 번으로 부모님의 건강 상태를
                     </p>
@@ -881,7 +871,6 @@ export default function App() {
         </div>
       </section>
       {/* App Feature Section - Desktop */}
-      {/* ... (App Feature Section Desktop 생략) ... */}
       <section className="hidden md:block relative shrink-0 w-full bg-white feature-desktop">
         <div className="size-full">
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[100px] lg:px-[312px] py-[90px] lg:py-[100px] relative w-full">
@@ -892,7 +881,7 @@ export default function App() {
                     <p className="mb-0">손안에서 확인하는</p>
                     <p>부모님 건강 리포트</p>
                   </div>
-                  <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[#666666] text-[14px] w-full">
+                  <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[var(--mc-gray-5)] text-[14px] w-full">
                     바쁜 일상 속에서도 터치 한 번으로 부모님의 건강 상태를 언제
                     어디서든 쉽고 빠르게 확인할 수 있습니다.
                   </p>
@@ -911,18 +900,18 @@ export default function App() {
                         <circle
                           cx="11.4781"
                           cy="10.5217"
-                          fill="#E6FAEF"
+                          fill="var(--mc-main-g100)"
                           r="7.65217"
                         />
                         <path
                           d={svgPaths.pc334d40}
-                          stroke="#35C156"
+                          stroke="var(--mc-main-color)"
                           strokeLinecap="round"
                           strokeWidth="1.43478"
                         />
                       </svg>
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       오늘의 컨디션, 식사, 복약 정보 요약
                     </p>
                   </div>
@@ -936,22 +925,25 @@ export default function App() {
                         preserveAspectRatio="none"
                         viewBox="0 0 22 22"
                       >
-                        <path d={svgPaths.p16213500} fill="#E6FAEF" />
+                        <path
+                          d={svgPaths.p16213500}
+                          fill="var(--mc-main-g100)"
+                        />
                         <path
                           d="M11 7.6522V12.4348"
-                          stroke="#35C156"
+                          stroke="var(--mc-main-color)"
                           strokeLinecap="round"
                           strokeWidth="0.956522"
                         />
                         <path
                           d="M11 14.3478V14.3479"
-                          stroke="#35C156"
+                          stroke="var(--mc-main-color)"
                           strokeLinecap="round"
                           strokeWidth="0.956522"
                         />
                       </svg>
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       AI가 감지한 건강 위험 신호 즉시 알림
                     </p>
                   </div>
@@ -959,16 +951,16 @@ export default function App() {
                   {/* Feature 3 */}
                   <div className="content-stretch flex gap-[11.398px] items-center relative shrink-0 w-full">
                     <div className="overflow-clip relative shrink-0 size-[22px]">
-                      <div className="absolute bg-[#e6faef] h-[11.478px] left-[3.83px] rounded-[1.913px] top-[5.74px] w-[15.304px]" />
-                      <div className="absolute bg-[#89e38b] left-[5.74px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[8.61px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[11.48px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[14.35px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-[#89e38b] left-[17.22px] size-[0.957px] top-[8.61px]" />
-                      <div className="absolute bg-black h-[1.913px] left-[16.26px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
-                      <div className="absolute bg-black h-[1.913px] left-[5.74px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
+                      <div className="absolute bg-[var(--mc-main-g100)] h-[11.478px] left-[3.83px] rounded-[1.913px] top-[5.74px] w-[15.304px]" />
+                      <div className="absolute bg-[var(--mc-main-g200)] left-[5.74px] size-[0.957px] top-[8.61px]" />
+                      <div className="absolute bg-[var(--mc-main-g200)] left-[8.61px] size-[0.957px] top-[8.61px]" />
+                      <div className="absolute bg-[var(--mc-main-g200)] left-[11.48px] size-[0.957px] top-[8.61px]" />
+                      <div className="absolute bg-[var(--mc-main-g200)] left-[14.35px] size-[0.957px] top-[8.61px]" />
+                      <div className="absolute bg-[var(--mc-main-g200)] left-[17.22px] size-[0.957px] top-[8.61px]" />
+                      <div className="absolute bg-[var(--mc-gray-10)] h-[1.913px] left-[16.26px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
+                      <div className="absolute bg-[var(--mc-gray-10)] h-[1.913px] left-[5.74px] rounded-[1.913px] top-[4.78px] w-[0.957px]" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
                     </p>
                   </div>
@@ -1011,7 +1003,6 @@ export default function App() {
         <DesktopTestimonials />
       </section>
 
-      {/* Contact Section - 최종 수정된 부분 */}
       <section id="contact" className="bg-white relative shrink-0 w-full">
         <div className="flex flex-row items-center justify-center size-full">
           <div className="content-stretch flex gap-[10px] items-center justify-center px-4 md:px-[100px] lg:w-[561px] py-[60px] box-content md:py-[90px] lg:py-[100px] relative w-full">
@@ -1026,7 +1017,7 @@ export default function App() {
                   </p>
                 </div>
                 <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
-                  <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[#666666] text-[14px] md:text-[18px] text-center w-full md:whitespace-pre">
+                  <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[14px] md:text-[18px] text-center w-full md:whitespace-pre">
                     <span className="md:hidden">궁금하신 점을 남겨주시면</span>
                     <span className="md:hidden">
                       <br />
@@ -1048,21 +1039,19 @@ export default function App() {
                     <form
                       onSubmit={handleSubmit}
                       className="flex flex-row items-center self-stretch w-full"
-                      // 브라우저 기본 경고 메시지 비활성화
                       noValidate
                     >
                       <div className="content-stretch flex flex-col gap-[50px] md:gap-[50px] h-full items-start relative shrink-0 w-full">
                         <div className="content-stretch flex flex-col gap-[24px] md:gap-[36px] items-start relative shrink-0 w-full">
-                          {/* Name Field - 수정 */}
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
+                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>자녀분 성함 </span>
                                 <span
                                   className={
                                     validationErrors.name
-                                      ? "text-[#ff4949]"
-                                      : "text-[#10d266]"
+                                      ? "text-[var(--destructive)]"
+                                      : "text-[var(--mc-main-color)]"
                                   }
                                 >
                                   (필수)
@@ -1072,51 +1061,54 @@ export default function App() {
                             <div className="bg-white h-[58px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ 테두리 색상 조건부 클래스 제거
                                 className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]`}
                               />
                               <div className="flex flex-row items-center size-full">
                                 <input
                                   type="text"
-                                  name="name" // name 속성 추가
+                                  name="name"
                                   value={formData.name}
                                   onChange={handleChange}
-                                  onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
+                                  onBlur={handleBlur}
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
             bg-transparent
             border border-[var(--mc-gray-2)]
             hover:border-[var(--mc-gray-4)]
             hover:bg-[var(--mc-gray-1)]
             focus:border-[var(--mc-main-color)]
+            focus:bg-transparent
+            focus:hover:border-[var(--mc-main-color)]
+            focus:hover:bg-transparent
             rounded-[14px]
             outline-none
             font-['Pretendard',sans-serif] font-medium text-[16px]
-            placeholder:text-[#afafaf]
-            ${validationErrors.name ? "text-[#afafaf]" : "text-black"}`}
+            placeholder:text-[var(--mc-gray-3)]
+            ${
+              validationErrors.name
+                ? "text-[var(--mc-gray-3)]"
+                : "text-[var(--mc-gray-10)]"
+            }`}
                                   placeholder="성함을 입력해주세요"
                                   required
                                 />
                               </div>
                             </div>
-                            {/* 오류 메시지 표시 */}
                             {validationErrors.name && (
-                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[#FF8C8C] mt-[-8px]">
+                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[var(--destructive)] mt-[-8px]">
                                 {validationErrors.name}
                               </p>
                             )}
                           </div>
 
-                          {/* Phone Field - 수정 */}
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
+                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>연락처 </span>
-                                {/* ⭐ 필수 텍스트 색상 조건부 변경 */}
                                 <span
                                   className={
                                     validationErrors.phone
-                                      ? "text-[#ff4949]"
-                                      : "text-[#10d266]"
+                                      ? "text-[var(--destructive)]"
+                                      : "text-[var(--mc-main-color)]"
                                   }
                                 >
                                   (필수)
@@ -1126,51 +1118,55 @@ export default function App() {
                             <div className="bg-white h-[58px] relative rounded-[14px] shrink-0 w-full">
                               <div
                                 aria-hidden="true"
-                                // ⭐ 테두리 색상 조건부 클래스 제거
                                 className={`absolute border-[#d2d2d2] border-[1.2px] border-solid inset-0 pointer-events-none rounded-[14px]`}
                               />
                               <div className="flex flex-row items-center size-full">
                                 <input
                                   type="tel"
-                                  name="phone" // name 속성 추가
+                                  name="phone"
                                   value={formData.phone}
                                   onChange={handleChange}
-                                  onBlur={handleBlur} // ⭐ onBlur 핸들러 추가
+                                  onBlur={handleBlur}
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
             bg-transparent
             border border-[var(--mc-gray-2)]
             hover:border-[var(--mc-gray-4)]
             hover:bg-[var(--mc-gray-1)]
             focus:border-[var(--mc-main-color)]
+            focus:bg-transparent
+            focus:hover:border-[var(--mc-main-color)]
+            focus:hover:bg-transparent
             rounded-[14px]
             outline-none
             font-['Pretendard',sans-serif] font-medium text-[16px]
-            placeholder:text-[#afafaf]
-            ${validationErrors.name ? "text-[#afafaf]" : "text-black"}`}
+            placeholder:text-[var(--mc-gray-3)]
+            ${
+              validationErrors.name
+                ? "text-[var(--mc-gray-3)]"
+                : "text-[var(--mc-gray-10)]"
+            }`}
                                   placeholder="'-'없이 숫자만 입력해주세요"
                                   required
                                 />
                               </div>
                             </div>
-                            {/* 오류 메시지 표시 */}
                             {validationErrors.phone && (
-                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[#FF8C8C] mt-[-8px]">
+                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[var(--destructive)] mt-[-8px]">
                                 {validationErrors.phone}
                               </p>
                             )}
                           </div>
 
-                          {/* Email Field - 수정 */}
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
+                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>이메일 </span>
 
                                 <span
                                   className={
                                     validationErrors.email
-                                      ? "text-[#ff4949]"
-                                      : "text-[#10d266]"
+                                      ? "text-[var(--destructive)]"
+                                      : "text-[var(--mc-main-color)]"
                                   }
                                 >
                                   (필수)
@@ -1195,30 +1191,37 @@ export default function App() {
             hover:border-[var(--mc-gray-4)]
             hover:bg-[var(--mc-gray-1)]
             focus:border-[var(--mc-main-color)]
+            focus:bg-transparent
+            focus:hover:border-[var(--mc-main-color)]
+            focus:hover:bg-transparent
             rounded-[14px]
             outline-none
             font-['Pretendard',sans-serif] font-medium text-[16px]
-            placeholder:text-[#afafaf]
-            ${validationErrors.name ? "text-[#afafaf]" : "text-black"}`}
+            placeholder:text-[var(--mc-gray-3)]
+            ${
+              validationErrors.name
+                ? "text-[var(--mc-gray-3)]"
+                : "text-[var(--mc-gray-10)]"
+            }`}
                                   placeholder="답변 받으실 이메일 주소 입력해주세요"
                                   required
                                 />
                               </div>
                             </div>
-                            {/* 오류 메시지 표시 */}
                             {validationErrors.email && (
-                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[#FF8C8C] mt-[-8px]">
+                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[var(--destructive)] mt-[-8px]">
                                 {validationErrors.email}
                               </p>
                             )}
                           </div>
 
-                          {/* Message Field (변경 없음) */}
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454545] text-[18px] w-full">
+                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
                               <p className="leading-[1.3]">
                                 <span>문의 내용 </span>
-                                <span className="text-[#8a8a8a]">(선택)</span>
+                                <span className="text-[var(--mc-gray-4)]">
+                                  (선택)
+                                </span>
                               </p>
                             </div>
                             <div className="bg-white h-[134px] md:h-[199px] relative rounded-[14px] shrink-0 w-full">
@@ -1228,17 +1231,20 @@ export default function App() {
                               />
                               <div className="size-full">
                                 <textarea
-                                  name="message" // name 속성 추가
+                                  name="message"
                                   value={formData.message}
-                                  onChange={handleChange} // 수정된 핸들러 사용
+                                  onChange={handleChange}
                                   className="box-border content-stretch flex gap-[10px] h-full items-start px-[16px] py-[14px] relative w-full
            border border-[var(--mc-gray-2)]
            hover:bg-[var(--mc-gray-1)]
            hover:border-[var(--mc-gray-4)]
            focus:border-[var(--mc-main-color)]
+           focus:bg-transparent
+           focus:hover:border-[var(--mc-main-color)]
+           focus:hover:bg-transparent
            outline-none
            font-['Pretendard',sans-serif] font-medium text-[16px]
-           text-black placeholder:text-[#afafaf]
+           text-[var(--mc-gray-10)] placeholder:text-[var(--mc-gray-3)]
            resize-none rounded-[14px]"
                                   placeholder="서비스에 대해 궁금한 점을 자유롭게 남겨주세요."
                                 />
@@ -1289,7 +1295,7 @@ export default function App() {
               </div>
               <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
                 <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-                  <p className="font-['Pretendard',sans-serif] font-medium leading-[1.3] md:leading-[1.5] not-italic relative shrink-0 text-[#6f7176] text-[14px] md:text-[16px] lg:text-[18px] text-nowrap whitespace-pre">
+                  <p className="font-['Pretendard',sans-serif] font-medium leading-[1.3] md:leading-[1.5] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[14px] md:text-[16px] lg:text-[18px] text-nowrap whitespace-pre">
                     © 2025 Medicare Call. All Rights Reserved.
                   </p>
                 </div>
