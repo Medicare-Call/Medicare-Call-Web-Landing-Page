@@ -240,9 +240,17 @@ export default function App() {
                   }
                 >
                   <p
-                    className={`font-['Pretendard',sans-serif] text-[14px] leading-[1.3] whitespace-pre transition-colors ${
+                    style={{
+                      fontSize: "var(--b03-font-size)",
+                      lineHeight: "var(--b03-line-height)",
+                      fontWeight:
+                        activeSection === item.id
+                          ? "var(--b03-sb-weight)"
+                          : "var(--b03-r-weight)",
+                    }}
+                    className={`font-['Pretendard',sans-serif] whitespace-pre transition-colors ${
                       activeSection === item.id
-                        ? "text-black font-semibold"
+                        ? "text-black"
                         : "text-[var(--mc-gray-5)]"
                     }`}
                   >
@@ -313,7 +321,12 @@ export default function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full px-4 py-[10px] text-[12px] text-left transition-colors rounded-[10px] 
+                  style={{
+                    fontSize: "var(--b01-font-size)",
+                    lineHeight: "var(--b01-line-height)",
+                    fontWeight: "var(--b01-m-weight)",
+                  }}
+                  className={`w-full px-4 py-[10px] text-left transition-colors rounded-[10px]
             ${
               activeSection === item.id
                 ? "bg-[var(--mc-gray-1)]"
@@ -340,17 +353,31 @@ export default function App() {
           <div className="box-border content-stretch flex gap-[10px] items-center px-[16px] py-[80px] relative size-full">
             <div className="basis-0 content-stretch flex flex-col gap-[50px] grow items-center justify-center min-h-px min-w-px relative shrink-0">
               <div className="content-stretch flex flex-col gap-[20px] items-center relative shrink-0 w-full">
-                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] min-w-full not-italic relative shrink-0 text-[32px] text-center text-white w-[min-content]">
+                <div
+                  style={{
+                    fontSize: "var(--t02-font-size)",
+                    lineHeight: "var(--t02-line-height)",
+                    fontWeight: "var(--t02-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] min-w-full not-italic relative shrink-0 text-center text-white w-[min-content]"
+                >
                   <p className="mb-0">바쁜 당신을 대신해</p>
                   <p className="mb-0">메디가 매일 부모님</p>
                   <p>건강을 챙깁니다</p>
                 </div>
-                <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-3)] text-[14px] text-center w-[249px]">
-                  <div className="leading-[1.3] relative shrink-0 w-[239px]">
+                <div
+                  style={{
+                    fontSize: "var(--b03-font-size)",
+                    lineHeight: "var(--b03-line-height)",
+                    fontWeight: "var(--b03-r-weight)",
+                  }}
+                  className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center not-italic relative shrink-0 text-[var(--mc-gray-3)] text-center w-[249px]"
+                >
+                  <div className="relative shrink-0 w-[239px]">
                     <p className="mb-0">깜빡 잊으시는 부모님,</p>
                     <p>매번 챙겨드리기 힘든 바쁜 일상</p>
                   </div>
-                  <div className="leading-[1.3] min-w-full relative shrink-0 w-[min-content]">
+                  <div className="min-w-full relative shrink-0 w-[min-content]">
                     <p className="mb-0">이제 불안한 마음은 내려놓고,</p>
                     <p>AI 케어콜에게 맡겨주세요.</p>
                   </div>
@@ -360,7 +387,14 @@ export default function App() {
                 onClick={() => scrollToSection("contact")}
                 className="bg-[var(--mc-main-color)] box-border content-stretch flex gap-[10px] items-center justify-center px-[26px] py-[16px] relative rounded-[10px] shrink-0 hover:bg-[var(--mc-main-g500)] transition-all duration-300 cursor-pointer border-none"
               >
-                <p className="font-['Pretendard',sans-serif] font-semibold leading-[1.3] not-italic relative shrink-0 text-[20px] text-neutral-50 text-nowrap whitespace-pre">
+                <p
+                  style={{
+                    fontSize: "var(--t05-font-size)",
+                    lineHeight: "var(--t05-line-height)",
+                    fontWeight: "var(--t05-sb-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] not-italic relative shrink-0 text-neutral-50 text-nowrap whitespace-pre"
+                >
                   지금 바로 상담 신청하기
                 </p>
               </button>
@@ -369,7 +403,6 @@ export default function App() {
         </div>
       </section>
       {/* Hero Section - Desktop */}
-      {/* ... (Hero Section Desktop 생략) ... */}
       <section className="hidden md:block relative w-full overflow-hidden">
         <div className="absolute h-[550px] lg:h-[600px] left-0 top-0 w-full overflow-hidden pointer-events-none z-0">
           <img
@@ -380,11 +413,25 @@ export default function App() {
         </div>
         <div className="content-stretch flex flex-col gap-[50px] items-center relative shrink-0 w-full min-w-[713px]px-[100px] md:py-[118px] lg:py-[138px]">
           <div className="content-stretch flex flex-col gap-[20px] items-center relative shrink-0 w-full">
-            <div className="font-['Pretendard',sans-serif] font-bold leading-[1.4] min-w-full not-italic relative shrink-0 text-[42px] lg:text-[50px] text-center text-white w-[392px]">
+            <div
+              style={{
+                fontSize: "var(--t01-font-size)",
+                lineHeight: "var(--t01-line-height)",
+                fontWeight: "var(--t01-weight)",
+              }}
+              className="font-['Pretendard',sans-serif] min-w-full not-italic relative shrink-0 text-center text-white w-[392px]"
+            >
               <p className="mb-0">바쁜 당신을 대신해</p>
               <p>메디가 매일 부모님 건강을 챙깁니다</p>
             </div>
-            <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-3)] text-[18px] text-center text-nowrap whitespace-pre">
+            <div
+              style={{
+                fontSize: "var(--b01-font-size)",
+                lineHeight: "var(--b01-line-height)",
+                fontWeight: "var(--b01-r-weight)",
+              }}
+              className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center not-italic relative shrink-0 text-[var(--mc-gray-3)] text-center text-nowrap whitespace-pre"
+            >
               <p className="relative shrink-0">
                 깜빡 잊으시는 부모님, 매번 챙겨드리기 힘든 바쁜 일상
               </p>
@@ -397,7 +444,14 @@ export default function App() {
             onClick={() => scrollToSection("contact")}
             className="bg-[var(--mc-main-color)] box-border content-stretch flex gap-[10px] items-center justify-center px-[26px] py-[16px] relative rounded-[10px] shrink-0 hover:bg-[var(--mc-main-g500)] transition-all duration-300 cursor-pointer border-none"
           >
-            <p className="font-['Pretendard',sans-serif] font-semibold leading-[1.3] not-italic relative shrink-0 text-[20px] text-neutral-50 text-nowrap whitespace-pre">
+            <p
+              style={{
+                fontSize: "var(--t05-font-size)",
+                lineHeight: "var(--t05-line-height)",
+                fontWeight: "var(--t05-sb-weight)",
+              }}
+              className="font-['Pretendard',sans-serif] not-italic relative shrink-0 text-neutral-50 text-nowrap whitespace-pre"
+            >
               지금 바로 상담 신청하기
             </p>
           </button>
@@ -413,11 +467,25 @@ export default function App() {
             <div className="flex flex-col gap-[52px] grow items-start w-full">
               {/* 헤더 문구 */}
               <div className="flex flex-col gap-[20px] items-start text-center w-full">
-                <div className="font-['Pretendard',sans-serif] font-bold text-[#313131] text-[26px] w-full">
+                <div
+                  style={{
+                    fontSize: "var(--t03-font-size)",
+                    lineHeight: "var(--t03-line-height)",
+                    fontWeight: "var(--t03-b-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] text-[#313131] w-full"
+                >
                   <p className="mb-0">혹시, 이런 걱정 하고</p>
                   <p>계신가요?</p>
                 </div>
-                <div className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] text-[14px] w-full">
+                <div
+                  style={{
+                    fontSize: "var(--b03-font-size)",
+                    lineHeight: "var(--b03-line-height)",
+                    fontWeight: "var(--b03-r-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] w-full"
+                >
                   <p className="mb-0">부모님을 사랑하는 마음만큼,</p>
                   <p className="mb-0">현실의 벽은 높기만 합니다.</p>
                   <p className="mb-0">
@@ -471,15 +539,36 @@ export default function App() {
                     {/* 내용 */}
                     <div className="flex flex-col justify-center size-full p-[20px]">
                       <div className="flex flex-col gap-[24px] items-start z-10">
-                        <div className="text-white text-[16px] font-['Pretendard',sans-serif] leading-[1.3]">
+                        <div
+                          style={{
+                            fontSize: "var(--b02-font-size)",
+                            lineHeight: "var(--b02-line-height)",
+                            fontWeight: "var(--b02-r-weight)",
+                          }}
+                          className="text-white font-['Pretendard',sans-serif]"
+                        >
                           <p className="mb-0">{card.title1}</p>
                           <p>{card.title2}</p>
                         </div>
                         <div className="flex flex-col gap-[8px] items-start">
-                          <p className="text-[var(--mc-gray-2)] text-[14px]">
+                          <p
+                            style={{
+                              fontSize: "var(--b03-font-size)",
+                              lineHeight: "var(--b03-line-height)",
+                              fontWeight: "var(--b03-r-weight)",
+                            }}
+                            className="text-[var(--mc-gray-2)]"
+                          >
                             {card.subtitle}
                           </p>
-                          <p className="text-[var(--mc-main-color)] text-[32px] font-bold">
+                          <p
+                            style={{
+                              fontSize: "var(--t02-font-size)",
+                              lineHeight: "var(--t02-line-height)",
+                              fontWeight: "var(--t02-weight)",
+                            }}
+                            className="text-[var(--mc-main-color)]"
+                          >
                             {card.value}
                           </p>
                         </div>
@@ -498,10 +587,24 @@ export default function App() {
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[100px] lg:px-[192px] py-[100px] lg:py-[120px] relative w-full">
             <div className="content-stretch flex flex-col gap-[70px] lg:gap-[79px] items-center relative shrink-0 w-full">
               <div className="content-stretch flex flex-col gap-[27px] items-start relative shrink-0 w-full max-w-[432px]">
-                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-8)] text-[30px] lg:text-[32px] text-center w-full">
+                <div
+                  style={{
+                    fontSize: "var(--t02-font-size)",
+                    lineHeight: "var(--t02-line-height)",
+                    fontWeight: "var(--t02-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] not-italic relative shrink-0 text-[var(--mc-gray-8)] text-center w-full"
+                >
                   <p>혹시, 이런 걱정 하고 계신가요?</p>
                 </div>
-                <div className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[18px] text-center w-full">
+                <div
+                  style={{
+                    fontSize: "var(--b01-font-size)",
+                    lineHeight: "var(--b01-line-height)",
+                    fontWeight: "var(--b01-r-weight)",
+                  }}
+                  className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center not-italic relative shrink-0 text-[var(--mc-gray-5)] text-center w-full"
+                >
                   <p className="relative shrink-0">
                     부모님을 사랑하는 마음만큼, 현실의 벽은 높기만 합니다.
                   </p>
@@ -553,18 +656,35 @@ export default function App() {
                     {/* 내용 */}
                     <div className="relative z-10 flex flex-col justify-between h-full p-[30px]">
                       <div
-                        className={
-                          "text-[20px] text-white font-['Pretendard',sans-serif] leading-[1.3] text-left"
-                        }
+                        style={{
+                          fontSize: "var(--t05-font-size)",
+                          lineHeight: "var(--t05-line-height)",
+                          fontWeight: "var(--t05-sb-weight)",
+                        }}
+                        className="text-white font-['Pretendard',sans-serif] text-left"
                       >
                         <p className="mb-0">{card.title1}</p>
                         <p>{card.title2}</p>
                       </div>
-                      <div className={"flex flex-col gap-[8px] items-start"}>
-                        <p className="text-[var(--mc-gray-2)] text-[14px]">
+                      <div className="flex flex-col gap-[8px] items-start">
+                        <p
+                          style={{
+                            fontSize: "var(--b03-font-size)",
+                            lineHeight: "var(--b03-line-height)",
+                            fontWeight: "var(--b03-r-weight)",
+                          }}
+                          className="text-[var(--mc-gray-2)]"
+                        >
                           {card.subtitle}
                         </p>
-                        <p className="text-[var(--mc-main-color)] text-[40px] font-bold whitespace-pre-line">
+                        <p
+                          style={{
+                            fontSize: "var(--t01-font-size)",
+                            lineHeight: "var(--t01-line-height)",
+                            fontWeight: "var(--t01-weight)",
+                          }}
+                          className="text-[var(--mc-main-color)] whitespace-pre-line"
+                        >
                           {card.value}
                         </p>
                       </div>
@@ -582,7 +702,14 @@ export default function App() {
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-4 md:px-[100px] lg:px-[182px] py-[60px] md:py-[60px] lg:py-[70px] relative w-full">
             <div className="content-stretch flex flex-col gap-[52px] md:gap-[70px] lg:gap-[80px] items-center relative shrink-0 w-full">
               <div className="content-stretch flex flex-col gap-[20px] md:gap-[27px] items-end relative shrink-0 w-full">
-                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-8)] text-[26px] md:text-[30px] lg:text-[32px] text-center w-full">
+                <div
+                  style={{
+                    fontSize: "var(--t03-font-size)",
+                    lineHeight: "var(--t03-line-height)",
+                    fontWeight: "var(--t03-b-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] md:text-[var(--t02-font-size)] md:leading-[var(--t02-line-height)] md:font-[var(--t02-weight)] not-italic relative shrink-0 text-[var(--mc-gray-8)] text-center w-full"
+                >
                   <p className="mb-0 md:hidden">메디케어콜 AI가</p>
                   <p className="mb-0 md:hidden">똑똑하게 부모님과</p>
                   <p className="md:hidden">소통합니다.</p>
@@ -592,7 +719,14 @@ export default function App() {
                   </p>
                 </div>
                 <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
-                  <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[#666666] text-[14px] md:text-[18px] text-center w-full md:whitespace-pre">
+                  <p
+                    style={{
+                      fontSize: "var(--b03-font-size)",
+                      lineHeight: "var(--b03-line-height)",
+                      fontWeight: "var(--b03-r-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] md:text-[var(--b01-font-size)] md:leading-[var(--b01-line-height)] not-italic relative shrink-0 text-[#666666] text-center w-full md:whitespace-pre"
+                  >
                     <span className="md:hidden">
                       단 3단계로 부모님의 건강과
                     </span>
@@ -743,10 +877,24 @@ export default function App() {
                         {step.icon}
                       </div>
                       <div className="flex flex-col gap-[16px] items-center text-center w-full">
-                        <p className="font-['Pretendard',sans-serif] font-semibold md:font-bold leading-[1.3] text-[16px] md:text-[15.304px] text-neutral-950 w-full">
+                        <p
+                          style={{
+                            fontSize: "var(--b02-font-size)",
+                            lineHeight: "var(--b02-line-height)",
+                            fontWeight: "var(--b02-sb-weight)",
+                          }}
+                          className="font-['Pretendard',sans-serif] md:font-[var(--b02-b-weight)] text-neutral-950 w-full"
+                        >
                           {step.id}. {step.title}
                         </p>
-                        <div className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] text-[14px] leading-[1.3] w-full">
+                        <div
+                          style={{
+                            fontSize: "var(--b03-font-size)",
+                            lineHeight: "var(--b03-line-height)",
+                            fontWeight: "var(--b03-r-weight)",
+                          }}
+                          className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] w-full"
+                        >
                           <p className="mb-0">{step.desc1}</p>
                           <p className="mb-0">{step.desc2}</p>
                           <p>{step.desc3}</p>
@@ -767,12 +915,26 @@ export default function App() {
           <div className="box-border content-stretch flex gap-[10px] items-center px-[16px] py-[60px] relative size-full">
             <div className="basis-0 content-stretch flex flex-col gap-[32px] grow items-center min-h-px min-w-px relative shrink-0">
               <div className="content-stretch flex flex-col gap-[32px] items-center relative shrink-0 w-full">
-                <div className="content-stretch flex flex-col gap-[16px] items-start leading-[0] not-italic relative shrink-0 text-center w-full">
-                  <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] relative shrink-0 text-[26px] text-neutral-950 w-full">
+                <div className="content-stretch flex flex-col gap-[16px] items-start not-italic relative shrink-0 text-center w-full">
+                  <div
+                    style={{
+                      fontSize: "var(--t03-font-size)",
+                      lineHeight: "var(--t03-line-height)",
+                      fontWeight: "var(--t03-b-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] relative shrink-0 text-neutral-950 w-full"
+                  >
                     <p className="mb-0">손안에서 확인하는</p>
                     <p>부모님 건강 리포트</p>
                   </div>
-                  <div className="font-['Pretendard',sans-serif] leading-[1.3] relative shrink-0 text-[var(--mc-gray-5)] text-[14px] w-full">
+                  <div
+                    style={{
+                      fontSize: "var(--b03-font-size)",
+                      lineHeight: "var(--b03-line-height)",
+                      fontWeight: "var(--b03-r-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] relative shrink-0 text-[var(--mc-gray-5)] w-full"
+                  >
                     <p className="mb-0">
                       바쁜 일상 속에서도 터치 한 번으로 부모님의 건강 상태를
                     </p>
@@ -786,7 +948,7 @@ export default function App() {
                     <div className="relative shrink-0 size-[22px]">
                       <img src="/icons/check.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] text-[var(--b03-font-size)] leading-[var(--b03-line-height)] font-[var(--b03-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
                       오늘의 컨디션, 식사, 복약 정보 요약
                     </p>
                   </div>
@@ -796,7 +958,7 @@ export default function App() {
                     <div className="relative shrink-0 size-[22px]">
                       <img src="/icons/warning.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] text-[var(--b03-font-size)] leading-[var(--b03-line-height)] font-[var(--b03-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
                       AI가 감지한 건강 위험 신호 즉시 알림
                     </p>
                   </div>
@@ -806,7 +968,7 @@ export default function App() {
                     <div className="overflow-clip relative shrink-0 size-[22px]">
                       <img src="/icons/calendar.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[16px] text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] text-[var(--b03-font-size)] leading-[var(--b03-line-height)] font-[var(--b03-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
                     </p>
                   </div>
@@ -832,12 +994,26 @@ export default function App() {
           <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[100px] lg:px-[312px] py-[90px] lg:py-[100px] relative w-full">
             <div className="content-stretch flex flex-col lg:flex-row gap-[80px] lg:gap-[194px] items-start lg: relative shrink-0 w-full justify-center">
               <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full lg:w-[345.739px]">
-                <div className="content-stretch flex flex-col gap-[16px] items-start leading-[1.3] not-italic relative shrink-0 w-full">
-                  <div className="font-['Pretendard',sans-serif] font-bold text-[30px] lg:text-[32px] text-neutral-950 w-full">
+                <div className="content-stretch flex flex-col gap-[16px] items-start not-italic relative shrink-0 w-full">
+                  <div
+                    style={{
+                      fontSize: "var(--t04-font-size)",
+                      lineHeight: "var(--t04-line-height)",
+                      fontWeight: "var(--t04-b-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] lg:text-[var(--t02-font-size)] lg:leading-[var(--t02-line-height)] lg:font-[var(--t02-weight)] text-neutral-950 w-full"
+                  >
                     <p className="mb-0">손안에서 확인하는</p>
                     <p>부모님 건강 리포트</p>
                   </div>
-                  <p className="font-['Pretendard',sans-serif] relative shrink-0 text-[var(--mc-gray-5)] text-[14px] w-full">
+                  <p
+                    style={{
+                      fontSize: "var(--b03-font-size)",
+                      lineHeight: "var(--b03-line-height)",
+                      fontWeight: "var(--b03-r-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] relative shrink-0 text-[var(--mc-gray-5)] w-full"
+                  >
                     바쁜 일상 속에서도 터치 한 번으로 부모님의 건강 상태를 언제
                     어디서든 쉽고 빠르게 확인할 수 있습니다.
                   </p>
@@ -849,7 +1025,14 @@ export default function App() {
                     <div className="relative shrink-0 size-[22px]">
                       <img src="/icons/check.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
+                    <p
+                      style={{
+                        fontSize: "var(--b03-font-size)",
+                        lineHeight: "var(--b03-line-height)",
+                        fontWeight: "var(--b03-r-weight)",
+                      }}
+                      className="font-['Pretendard',sans-serif] not-italic relative shrink-0 text-[var(--mc-gray-10)] text-nowrap whitespace-pre"
+                    >
                       오늘의 컨디션, 식사, 복약 정보 요약
                     </p>
                   </div>
@@ -859,7 +1042,14 @@ export default function App() {
                     <div className="relative shrink-0 size-[22px]">
                       <img src="/icons/warning.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
+                    <p
+                      style={{
+                        fontSize: "var(--b03-font-size)",
+                        lineHeight: "var(--b03-line-height)",
+                        fontWeight: "var(--b03-r-weight)",
+                      }}
+                      className="font-['Pretendard',sans-serif] not-italic relative shrink-0 text-[var(--mc-gray-10)] text-nowrap whitespace-pre"
+                    >
                       AI가 감지한 건강 위험 신호 즉시 알림
                     </p>
                   </div>
@@ -869,7 +1059,14 @@ export default function App() {
                     <div className="overflow-clip relative shrink-0 size-[22px]">
                       <img src="/icons/calendar.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[14px] text-[var(--mc-gray-10)] text-nowrap whitespace-pre">
+                    <p
+                      style={{
+                        fontSize: "var(--b03-font-size)",
+                        lineHeight: "var(--b03-line-height)",
+                        fontWeight: "var(--b03-r-weight)",
+                      }}
+                      className="font-['Pretendard',sans-serif] not-italic relative shrink-0 text-[var(--mc-gray-10)] text-nowrap whitespace-pre"
+                    >
                       주간/월간 건강 데이터 추이 분석 그래프
                     </p>
                   </div>
@@ -892,7 +1089,14 @@ export default function App() {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-[80px] bg-white overflow-hidden">
-        <h2 className="text-[26px] md:text-[32px] font-bold text-black text-center mb-[60px] leading-[1.3]">
+        <h2
+          style={{
+            fontSize: "var(--t03-font-size)",
+            lineHeight: "var(--t03-line-height)",
+            fontWeight: "var(--t03-b-weight)",
+          }}
+          className="md:text-[var(--t02-font-size)] md:leading-[var(--t02-line-height)] md:font-[var(--t02-weight)] text-black text-center mb-[60px]"
+        >
           <span className="md:hidden block">
             메디케어콜과
             <br />
@@ -917,7 +1121,14 @@ export default function App() {
           <div className="content-stretch flex gap-[10px] items-center justify-center px-4 md:px-[100px] lg:w-[561px] py-[60px] box-content md:py-[90px] lg:py-[100px] relative w-full">
             <div className="basis-0 content-stretch flex flex-col gap-[32px] md:gap-[70px] lg:gap-[80px] grow items-center min-h-px min-w-px relative shrink-0">
               <div className="content-stretch flex flex-col gap-[20px] md:gap-[27px] items-end relative shrink-0 w-full">
-                <div className="font-['Pretendard',sans-serif] font-bold leading-[1.3] not-italic relative shrink-0 text-[#313131] text-[26px] md:text-[30px] lg:text-[32px] text-center w-full">
+                <div
+                  style={{
+                    fontSize: "var(--t03-font-size)",
+                    lineHeight: "var(--t03-line-height)",
+                    fontWeight: "var(--t03-b-weight)",
+                  }}
+                  className="font-['Pretendard',sans-serif] md:text-[var(--t04-font-size)] md:leading-[var(--t04-line-height)] md:font-[var(--t04-b-weight)] lg:text-[var(--t02-font-size)] lg:leading-[var(--t02-line-height)] lg:font-[var(--t02-weight)] not-italic relative shrink-0 text-[#313131] text-center w-full"
+                >
                   <p className="mb-0">더 늦기 전에,</p>
                   <p className="mb-0 md:hidden">부모님께 스마트한 안부를</p>
                   <p className="md:hidden">선물하세요</p>
@@ -926,7 +1137,14 @@ export default function App() {
                   </p>
                 </div>
                 <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
-                  <p className="font-['Pretendard',sans-serif] leading-[1.3] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[14px] md:text-[18px] text-center w-full md:whitespace-pre">
+                  <p
+                    style={{
+                      fontSize: "var(--b03-font-size)",
+                      lineHeight: "var(--b03-line-height)",
+                      fontWeight: "var(--b03-r-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] md:text-[var(--b01-font-size)] md:leading-[var(--b01-line-height)] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-center w-full md:whitespace-pre"
+                  >
                     <span className="md:hidden">궁금하신 점을 남겨주시면</span>
                     <span className="md:hidden">
                       <br />
@@ -953,8 +1171,15 @@ export default function App() {
                       <div className="content-stretch flex flex-col gap-[50px] md:gap-[50px] h-full items-start relative shrink-0 w-full">
                         <div className="content-stretch flex flex-col gap-[24px] md:gap-[36px] items-start relative shrink-0 w-full">
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
-                              <p className="leading-[1.3]">
+                            <div
+                              style={{
+                                fontSize: "var(--b01-font-size)",
+                                lineHeight: "var(--b01-line-height)",
+                                fontWeight: "var(--b01-m-weight)",
+                              }}
+                              className="flex flex-col font-['Pretendard',sans-serif] justify-center not-italic relative shrink-0 text-[var(--mc-gray-6)] w-full"
+                            >
+                              <p>
                                 <span>자녀분 성함 </span>
                                 <span
                                   className={
@@ -979,6 +1204,11 @@ export default function App() {
                                   value={formData.name}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
+                                  style={{
+                                    fontSize: "var(--b02-font-size)",
+                                    lineHeight: "var(--b02-line-height)",
+                                    fontWeight: "var(--b02-m-weight)",
+                                  }}
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
             bg-transparent
             border border-[var(--mc-gray-2)]
@@ -990,7 +1220,7 @@ export default function App() {
             focus:hover:bg-transparent
             rounded-[14px]
             outline-none
-            font-['Pretendard',sans-serif] font-medium text-[16px]
+            font-['Pretendard',sans-serif]
             placeholder:text-[var(--mc-gray-3)]
             ${
               validationErrors.name
@@ -1003,15 +1233,29 @@ export default function App() {
                               </div>
                             </div>
                             {validationErrors.name && (
-                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[var(--destructive)] mt-[-8px]">
+                              <p
+                                style={{
+                                  fontSize: "var(--b02-font-size)",
+                                  lineHeight: "var(--b02-line-height)",
+                                  fontWeight: "var(--b02-r-weight)",
+                                }}
+                                className="font-['Pretendard',sans-serif] text-[#FF8C8C] mt-[-8px]"
+                              >
                                 {validationErrors.name}
                               </p>
                             )}
                           </div>
 
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
-                              <p className="leading-[1.3]">
+                            <div
+                              style={{
+                                fontSize: "var(--b01-font-size)",
+                                lineHeight: "var(--b01-line-height)",
+                                fontWeight: "var(--b01-m-weight)",
+                              }}
+                              className="flex flex-col font-['Pretendard',sans-serif] justify-center not-italic relative shrink-0 text-[var(--mc-gray-6)] w-full"
+                            >
+                              <p>
                                 <span>연락처 </span>
                                 <span
                                   className={
@@ -1036,6 +1280,11 @@ export default function App() {
                                   value={formData.phone}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
+                                  style={{
+                                    fontSize: "var(--b02-font-size)",
+                                    lineHeight: "var(--b02-line-height)",
+                                    fontWeight: "var(--b02-m-weight)",
+                                  }}
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
             bg-transparent
             border border-[var(--mc-gray-2)]
@@ -1047,7 +1296,7 @@ export default function App() {
             focus:hover:bg-transparent
             rounded-[14px]
             outline-none
-            font-['Pretendard',sans-serif] font-medium text-[16px]
+            font-['Pretendard',sans-serif]
             placeholder:text-[var(--mc-gray-3)]
             ${
               validationErrors.name
@@ -1060,15 +1309,29 @@ export default function App() {
                               </div>
                             </div>
                             {validationErrors.phone && (
-                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[var(--destructive)] mt-[-8px]">
+                              <p
+                                style={{
+                                  fontSize: "var(--b02-font-size)",
+                                  lineHeight: "var(--b02-line-height)",
+                                  fontWeight: "var(--b02-r-weight)",
+                                }}
+                                className="font-['Pretendard',sans-serif] text-[#FF8C8C] mt-[-8px]"
+                              >
                                 {validationErrors.phone}
                               </p>
                             )}
                           </div>
 
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
-                              <p className="leading-[1.3]">
+                            <div
+                              style={{
+                                fontSize: "var(--b01-font-size)",
+                                lineHeight: "var(--b01-line-height)",
+                                fontWeight: "var(--b01-m-weight)",
+                              }}
+                              className="flex flex-col font-['Pretendard',sans-serif] justify-center not-italic relative shrink-0 text-[var(--mc-gray-6)] w-full"
+                            >
+                              <p>
                                 <span>이메일 </span>
 
                                 <span
@@ -1094,6 +1357,11 @@ export default function App() {
                                   value={formData.email}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
+                                  style={{
+                                    fontSize: "var(--b02-font-size)",
+                                    lineHeight: "var(--b02-line-height)",
+                                    fontWeight: "var(--b02-m-weight)",
+                                  }}
                                   className={`box-border content-stretch flex gap-[10px] h-[58px] items-center px-[16px] py-[14px] relative w-full
             bg-transparent
             border border-[var(--mc-gray-2)]
@@ -1105,7 +1373,7 @@ export default function App() {
             focus:hover:bg-transparent
             rounded-[14px]
             outline-none
-            font-['Pretendard',sans-serif] font-medium text-[16px]
+            font-['Pretendard',sans-serif]
             placeholder:text-[var(--mc-gray-3)]
             ${
               validationErrors.name
@@ -1118,15 +1386,29 @@ export default function App() {
                               </div>
                             </div>
                             {validationErrors.email && (
-                              <p className="font-['Pretendard',sans-serif] text-[16px] text-[var(--destructive)] mt-[-8px]">
+                              <p
+                                style={{
+                                  fontSize: "var(--b02-font-size)",
+                                  lineHeight: "var(--b02-line-height)",
+                                  fontWeight: "var(--b02-r-weight)",
+                                }}
+                                className="font-['Pretendard',sans-serif] text-[#FF8C8C] mt-[-8px]"
+                              >
                                 {validationErrors.email}
                               </p>
                             )}
                           </div>
 
                           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full">
-                            <div className="flex flex-col font-['Pretendard',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[var(--mc-gray-6)] text-[18px] w-full">
-                              <p className="leading-[1.3]">
+                            <div
+                              style={{
+                                fontSize: "var(--b01-font-size)",
+                                lineHeight: "var(--b01-line-height)",
+                                fontWeight: "var(--b01-m-weight)",
+                              }}
+                              className="flex flex-col font-['Pretendard',sans-serif] justify-center not-italic relative shrink-0 text-[var(--mc-gray-6)] w-full"
+                            >
+                              <p>
                                 <span>문의 내용 </span>
                                 <span className="text-[var(--mc-gray-4)]">
                                   (선택)
@@ -1143,6 +1425,11 @@ export default function App() {
                                   name="message"
                                   value={formData.message}
                                   onChange={handleChange}
+                                  style={{
+                                    fontSize: "var(--b02-font-size)",
+                                    lineHeight: "var(--b02-line-height)",
+                                    fontWeight: "var(--b02-m-weight)",
+                                  }}
                                   className="box-border content-stretch flex gap-[10px] h-full items-start px-[16px] py-[14px] relative w-full
            border border-[var(--mc-gray-2)]
            hover:bg-[var(--mc-gray-1)]
@@ -1152,7 +1439,7 @@ export default function App() {
            focus:hover:border-[var(--mc-main-color)]
            focus:hover:bg-transparent
            outline-none
-           font-['Pretendard',sans-serif] font-medium text-[16px]
+           font-['Pretendard',sans-serif]
            text-[var(--mc-gray-10)] placeholder:text-[var(--mc-gray-3)]
            resize-none rounded-[14px]"
                                   placeholder="서비스에 대해 궁금한 점을 자유롭게 남겨주세요."
@@ -1169,7 +1456,14 @@ export default function App() {
                         >
                           <div className="flex flex-row items-center justify-center size-full">
                             <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[20px] md:px-[26px] py-[14px] md:py-[16px] relative w-full">
-                              <p className="font-['Pretendard',sans-serif] font-semibold leading-[1.3] not-italic relative shrink-0 text-[18px] md:text-[20px] text-neutral-50 text-nowrap whitespace-pre">
+                              <p
+                                style={{
+                                  fontSize: "var(--b01-font-size)",
+                                  lineHeight: "var(--b01-line-height)",
+                                  fontWeight: "var(--b01-sb-weight)",
+                                }}
+                                className="font-['Pretendard',sans-serif] md:leading-[var(--t05-line-height)] md:font-[var(--t05-sb-weight)] not-italic relative shrink-0 text-neutral-50 text-nowrap whitespace-pre"
+                              >
                                 {isSubmitting
                                   ? "신청 중..."
                                   : "무료 상담 신청하기"}
@@ -1204,7 +1498,14 @@ export default function App() {
               </div>
               <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
                 <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-                  <p className="font-['Pretendard',sans-serif] font-medium leading-[1.3] md:leading-[1.5] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-[14px] md:text-[16px] lg:text-[18px] text-nowrap whitespace-pre">
+                  <p
+                    style={{
+                      fontSize: "var(--b03-font-size)",
+                      lineHeight: "var(--b03-line-height)",
+                      fontWeight: "var(--b03-m-weight)",
+                    }}
+                    className="font-['Pretendard',sans-serif] md:text-[var(--b02-font-size)] md:leading-[var(--b02-line-height)] md:font-[var(--b02-m-weight)] lg:text-[var(--b01-font-size)] lg:leading-[var(--b01-line-height)] lg:font-[var(--b01-m-weight)] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-nowrap whitespace-pre"
+                  >
                     © 2025 Medicare Call. All Rights Reserved.
                   </p>
                 </div>
