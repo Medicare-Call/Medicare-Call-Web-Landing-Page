@@ -237,17 +237,17 @@ const DesktopTestimonials = () => {
                   style={{
                     color: isCenter ? "#ffffff" : "#666666",
                     fontSize: isCenter ? "20px" : "16px",
-                    transition: `all ${transitionDuration}`,
+                    transition: `color ${transitionDuration}`,
                   }}
                 >
-                  “{item.text}”
+                  "{item.text}"
                 </p>
                 <p
                   className="text-right"
                   style={{
                     color: isCenter ? "#e6faef" : "#afafaf",
                     fontSize: isCenter ? "16px" : "12px",
-                    transition: `all ${transitionDuration}`,
+                    transition: `color ${transitionDuration}`,
                   }}
                 >
                   {item.author}
