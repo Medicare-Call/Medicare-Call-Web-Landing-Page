@@ -367,9 +367,9 @@ export default function App() {
                 </div>
                 <div
                   style={{
-                    fontSize: "var(--b03-font-size)",
-                    lineHeight: "var(--b03-line-height)",
-                    fontWeight: "var(--b03-r-weight)",
+                    fontSize: "var(--b02-font-size)",
+                    lineHeight: "var(--b02-line-height)",
+                    fontWeight: "var(--b02-r-weight)",
                   }}
                   className="content-stretch flex flex-col font-['Pretendard',sans-serif] gap-[10px] items-center not-italic relative shrink-0 text-[var(--mc-gray-3)] text-center w-[249px]"
                 >
@@ -480,9 +480,9 @@ export default function App() {
                 </div>
                 <div
                   style={{
-                    fontSize: "var(--b03-font-size)",
-                    lineHeight: "var(--b03-line-height)",
-                    fontWeight: "var(--b03-r-weight)",
+                    fontSize: "var(--b02-font-size)",
+                    lineHeight: "var(--b02-line-height)",
+                    fontWeight: "var(--b02-r-weight)",
                   }}
                   className="font-['Pretendard',sans-serif] text-[var(--mc-gray-5)] w-full"
                 >
@@ -721,9 +721,9 @@ export default function App() {
                 <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
                   <p
                     style={{
-                      fontSize: "var(--b03-font-size)",
-                      lineHeight: "var(--b03-line-height)",
-                      fontWeight: "var(--b03-r-weight)",
+                      fontSize: "var(--b02-font-size)",
+                      lineHeight: "var(--b02-line-height)",
+                      fontWeight: "var(--b02-r-weight)",
                     }}
                     className="font-['Pretendard',sans-serif] md:text-[var(--b01-font-size)] md:leading-[var(--b01-line-height)] not-italic relative shrink-0 text-[#666666] text-center w-full md:whitespace-pre"
                   >
@@ -929,16 +929,15 @@ export default function App() {
                   </div>
                   <div
                     style={{
-                      fontSize: "var(--b03-font-size)",
-                      lineHeight: "var(--b03-line-height)",
-                      fontWeight: "var(--b03-r-weight)",
+                      fontSize: "var(--b02-font-size)",
+                      lineHeight: "var(--b02-line-height)",
+                      fontWeight: "var(--b02-r-weight)",
                     }}
                     className="font-['Pretendard',sans-serif] relative shrink-0 text-[var(--mc-gray-5)] w-full"
                   >
-                    <p className="mb-0">
-                      바쁜 일상 속에서도 터치 한 번으로 부모님의 건강 상태를
-                    </p>
-                    <p>언제 어디서든 쉽고 빠르게 확인할 수 있습니다.</p>
+                    <p className="mb-0">바쁜 일상 속에서도 터치 한 번으로</p>
+                    <p>부모님의 건강 상태를 언제 어디서든</p>
+                    <p>쉽고 빠르게 확인할 수 있습니다.</p>
                   </div>
                 </div>
 
@@ -948,7 +947,7 @@ export default function App() {
                     <div className="relative shrink-0 size-[22px]">
                       <img src="/icons/check.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] text-[var(--b03-font-size)] leading-[var(--b03-line-height)] font-[var(--b03-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] text-[var(--b02-font-size)] leading-[var(--b02-line-height)] font-[var(--b02-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
                       오늘의 컨디션, 식사, 복약 정보 요약
                     </p>
                   </div>
@@ -958,7 +957,7 @@ export default function App() {
                     <div className="relative shrink-0 size-[22px]">
                       <img src="/icons/warning.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] text-[var(--b03-font-size)] leading-[var(--b03-line-height)] font-[var(--b03-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] text-[var(--b02-font-size)] leading-[var(--b02-line-height)] font-[var(--b02-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
                       AI가 감지한 건강 위험 신호 즉시 알림
                     </p>
                   </div>
@@ -968,7 +967,7 @@ export default function App() {
                     <div className="overflow-clip relative shrink-0 size-[22px]">
                       <img src="/icons/calendar.svg" />
                     </div>
-                    <p className="font-['Pretendard',sans-serif] text-[var(--b03-font-size)] leading-[var(--b03-line-height)] font-[var(--b03-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
+                    <p className="font-['Pretendard',sans-serif] text-[var(--b02-font-size)] leading-[var(--b02-line-height)] font-[var(--b02-r-weight)] not-italic relative shrink-0 text-black text-nowrap whitespace-pre">
                       주간/월간 건강 데이터 추이 분석 그래프
                     </p>
                   </div>
@@ -1139,9 +1138,9 @@ export default function App() {
                 <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
                   <p
                     style={{
-                      fontSize: "var(--b03-font-size)",
-                      lineHeight: "var(--b03-line-height)",
-                      fontWeight: "var(--b03-r-weight)",
+                      fontSize: "var(--b02-font-size)",
+                      lineHeight: "var(--b02-line-height)",
+                      fontWeight: "var(--b02-r-weight)",
                     }}
                     className="font-['Pretendard',sans-serif] md:text-[var(--b01-font-size)] md:leading-[var(--b01-line-height)] not-italic relative shrink-0 text-[var(--mc-gray-5)] text-center w-full md:whitespace-pre"
                   >
@@ -1150,11 +1149,11 @@ export default function App() {
                       <br />
                     </span>
                     <span className="md:hidden">
-                      전문 컨설턴트가 친절하게 상담해 드리곘습니다.
+                      전문 컨설턴트가 친절하게 상담해 드리겠습니다.
                     </span>
                     <span className="hidden md:inline">
                       궁금하신 점을 남겨주시면 전문 컨설턴트가 친절하게 상담해
-                      드리곘습니다.
+                      드리겠습니다.
                     </span>
                   </p>
                 </div>
