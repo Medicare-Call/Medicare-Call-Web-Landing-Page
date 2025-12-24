@@ -8,7 +8,7 @@ const MobileHeroSection: React.FC<MobileHeroSectionProps> = ({
     <section className="md:hidden relative w-full overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <img
-          alt=""
+          alt="부모님이 핸드폰으로 통화하는 모습"
           className="absolute h-[172.74%] left-[-194.48%] max-w-none top-[-14.29%] w-[376.92%]"
           src="/images/main.png"
         />
