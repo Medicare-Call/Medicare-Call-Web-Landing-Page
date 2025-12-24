@@ -8,7 +8,7 @@ const DesktopHeroSection: React.FC<DesktopHeroSectionProps> = ({
     <section className="hidden md:block relative w-full overflow-hidden">
       <div className="absolute h-[550px] lg:h-[600px] left-0 top-0 w-full overflow-hidden pointer-events-none z-0">
         <img
-          alt=""
+          alt="부모님이 핸드폰으로 통화하는 모습"
           className="w-full h-full object-cover"
           src="/images/main.png"
         />
