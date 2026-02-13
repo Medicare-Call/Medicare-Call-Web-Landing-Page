@@ -2,6 +2,24 @@ const CONSULT_NOTIFY_EMAIL = process.env.CONSULT_NOTIFY_EMAIL || 'medicare924@gm
 const MAIL_FROM = process.env.MAIL_FROM || 'onboarding@resend.dev';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
+function getKstTimestamp() {
+  const now = new Date();
+  const datePart = new Intl.DateTimeFormat('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(now);
+  const timePart = new Intl.DateTimeFormat('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(now);
+  return `${datePart} ${timePart} (KST)`;
+}
+
 async function sendConsultationEmail({ name, phone, message, submittedAt }) {
   if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is not set on the server');
 
@@ -46,7 +64,7 @@ export default async function handler(req, res) {
       name,
       phone,
       message: message || '',
-      submittedAt: new Date().toISOString(),
+      submittedAt: getKstTimestamp(),
     });
 
     return res.status(200).json({ success: true, message: '상담 신청이 완료되었습니다.' });
