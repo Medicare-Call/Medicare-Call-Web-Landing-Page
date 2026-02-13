@@ -13,13 +13,6 @@ export const formFieldsConfig = [
     placeholder: "'-'없이 숫자만 입력해주세요",
     required: true,
   },
-  {
-    name: "email",
-    label: "이메일",
-    type: "email",
-    placeholder: "답변 받으실 이메일 주소 입력해주세요",
-    required: true,
-  },
 ] as const;
 
 export const textAreaFieldConfig = {

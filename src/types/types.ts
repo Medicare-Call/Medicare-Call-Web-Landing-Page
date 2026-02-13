@@ -1,14 +1,12 @@
 export interface ConsultationFormData {
   name: string;
   phone: string;
-  email: string;
   message: string;
 }
 
 export interface ValidationErrorsState {
   name: string;
   phone: string;
-  email: string;
 }
 
 // Component Props Interfaces

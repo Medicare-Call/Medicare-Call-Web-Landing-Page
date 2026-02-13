@@ -9,7 +9,6 @@ export const useContactForm = () => {
   const [formData, setFormData] = useState<ConsultationFormData>({
     name: "",
     phone: "",
-    email: "",
     message: "",
   });
 
@@ -19,8 +18,7 @@ export const useContactForm = () => {
     useState<ValidationErrorsState>({
       name: "",
       phone: "",
-      email: "",
-    });
+      });
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -37,7 +35,7 @@ export const useContactForm = () => {
 
     if (
       hasSubmitted &&
-      (key === "name" || key === "phone" || key === "email")
+      (key === "name" || key === "phone")
     ) {
       setValidationErrors((prevErrors) => ({
         ...prevErrors,
@@ -69,7 +67,6 @@ export const useContactForm = () => {
     const requiredErrors: ValidationErrorsState = {
       name: allErrors.name,
       phone: allErrors.phone,
-      email: allErrors.email,
     };
 
     setValidationErrors(requiredErrors);
@@ -101,8 +98,8 @@ export const useContactForm = () => {
 
       if (response.ok && result?.success) {
         alert("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
-        setFormData({ name: "", phone: "", email: "", message: "" });
-        setValidationErrors({ name: "", phone: "", email: "" });
+        setFormData({ name: "", phone: "", message: "" });
+        setValidationErrors({ name: "", phone: "" });
         setHasSubmitted(false);
       } else {
         const detail = result?.debug ? `\n(${result.debug})` : "";

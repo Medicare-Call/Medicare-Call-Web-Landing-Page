@@ -2,11 +2,11 @@ const CONSULT_NOTIFY_EMAIL = process.env.CONSULT_NOTIFY_EMAIL || 'medicare924@gm
 const MAIL_FROM = process.env.MAIL_FROM || 'onboarding@resend.dev';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
-async function sendConsultationEmail({ name, phone, email, message, submittedAt }) {
+async function sendConsultationEmail({ name, phone, message, submittedAt }) {
   if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is not set on the server');
 
   const subject = `[메디케어콜 상담신청] ${name} / ${phone}`;
-  const text = `새 상담 신청이 접수되었습니다.\n\n신청시각: ${submittedAt}\n이름: ${name}\n연락처: ${phone}\n이메일: ${email}\n문의내용: ${message || '(없음)'}`;
+  const text = `새 상담 신청이 접수되었습니다.\n\n신청시각: ${submittedAt}\n이름: ${name}\n연락처: ${phone}\n문의내용: ${message || '(없음)'}`;
 
   const resp = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -17,7 +17,6 @@ async function sendConsultationEmail({ name, phone, email, message, submittedAt 
     body: JSON.stringify({
       from: MAIL_FROM,
       to: [CONSULT_NOTIFY_EMAIL],
-      reply_to: email,
       subject,
       text,
     }),
@@ -38,15 +37,14 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method not allowed' });
 
   try {
-    const { name, phone, email, message } = req.body || {};
-    if (!name || !phone || !email) {
+    const { name, phone, message } = req.body || {};
+    if (!name || !phone) {
       return res.status(400).json({ success: false, error: '필수 정보를 모두 입력해주세요.' });
     }
 
     await sendConsultationEmail({
       name,
       phone,
-      email,
       message: message || '',
       submittedAt: new Date().toISOString(),
     });
