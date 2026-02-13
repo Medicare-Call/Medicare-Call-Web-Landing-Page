@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { projectId, publicAnonKey } from "../utils/supabase/info";
 import { validateForm } from "../utils/validation";
 import type {
   ConsultationFormData,
@@ -82,12 +81,11 @@ export const useContactForm = () => {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-6e07f166/consultations`,
+        `/api/server/make-server-6e07f166/consultations`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${publicAnonKey}`,
           },
           body: JSON.stringify(formData),
         }

@@ -99,7 +99,12 @@ app.post("/make-server-6e07f166/consultations", async (c) => {
       submittedAt: timestamp,
     };
 
-    await kv.set(key, consultationData);
+    try {
+      await kv.set(key, consultationData);
+    } catch (kvError) {
+      console.log(`KV save skipped/failed: ${kvError}`);
+    }
+
     await sendConsultationEmail({
       name,
       phone,
