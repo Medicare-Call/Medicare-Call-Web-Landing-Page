@@ -16,8 +16,7 @@ async function sendConsultationEmail(params: {
   submittedAt: string;
 }) {
   if (!RESEND_API_KEY) {
-    console.log("RESEND_API_KEY not set. Skipping consultation email.");
-    return;
+    throw new Error("RESEND_API_KEY is not set on the server");
   }
 
   const subject = `[메디케어콜 상담신청] ${params.name} / ${params.phone}`;
@@ -119,11 +118,13 @@ app.post("/make-server-6e07f166/consultations", async (c) => {
       message: "상담 신청이 완료되었습니다.",
     });
   } catch (error) {
-    console.log(`Error saving consultation: ${error}`);
+    const message = error instanceof Error ? error.message : String(error);
+    console.log(`Error saving consultation: ${message}`);
     return c.json(
       {
         success: false,
         error: "상담 신청 중 오류가 발생했습니다. 다시 시도해주세요.",
+        debug: message,
       },
       500
     );
