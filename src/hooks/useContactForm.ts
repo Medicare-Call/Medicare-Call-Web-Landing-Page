@@ -91,19 +91,26 @@ export const useContactForm = () => {
         }
       );
 
-      const result = await response.json();
+      const raw = await response.text();
+      let result: any = null;
+      try {
+        result = raw ? JSON.parse(raw) : null;
+      } catch {
+        throw new Error(`API 응답 파싱 실패: ${raw?.slice(0, 200)}`);
+      }
 
-      if (result.success) {
+      if (response.ok && result?.success) {
         alert("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
         setFormData({ name: "", phone: "", email: "", message: "" });
         setValidationErrors({ name: "", phone: "", email: "" });
         setHasSubmitted(false);
       } else {
-        alert(result.error || "상담 신청 중 오류가 발생했습니다.");
+        const detail = result?.debug ? `\n(${result.debug})` : "";
+        alert((result?.error || "상담 신청 중 오류가 발생했습니다.") + detail);
       }
     } catch (error) {
       console.error("상담 신청 오류:", error);
-      alert("상담 신청 중 오류가 발생했습니다. 다시 시도해주세요.");
+      alert(`상담 신청 중 오류가 발생했습니다.\n${error instanceof Error ? error.message : ""}`);
     } finally {
       setIsSubmitting(false);
     }
