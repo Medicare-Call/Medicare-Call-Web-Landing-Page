@@ -1,6 +1,7 @@
 const CONSULT_NOTIFY_EMAIL = process.env.CONSULT_NOTIFY_EMAIL || 'medicare924@gmail.com';
 const MAIL_FROM = process.env.MAIL_FROM || 'onboarding@resend.dev';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
 function getKstTimestamp() {
   const now = new Date();
@@ -18,6 +19,29 @@ function getKstTimestamp() {
     hour12: false,
   }).format(now);
   return `${datePart} ${timePart} (KST)`;
+}
+
+async function sendDiscordWebhook({ name, phone, message, submittedAt }) {
+  if (!DISCORD_WEBHOOK_URL) return;
+
+  const content = [
+    '📩 **새 상담 신청 접수**',
+    `- 신청시각: ${submittedAt}`,
+    `- 이름: ${name}`,
+    `- 연락처: ${phone}`,
+    `- 문의내용: ${message || '(없음)'}`,
+  ].join('\n');
+
+  const resp = await fetch(DISCORD_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content }),
+  });
+
+  if (!resp.ok) {
+    const errText = await resp.text();
+    throw new Error(`Failed to send Discord webhook: ${resp.status} ${errText}`);
+  }
 }
 
 async function sendConsultationEmail({ name, phone, message, submittedAt }) {
@@ -60,12 +84,26 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: '필수 정보를 모두 입력해주세요.' });
     }
 
+    const submittedAt = getKstTimestamp();
+
     await sendConsultationEmail({
       name,
       phone,
       message: message || '',
-      submittedAt: getKstTimestamp(),
+      submittedAt,
     });
+
+    // 디스코드 웹훅은 선택 사항: 실패해도 상담 신청 자체는 성공 처리
+    try {
+      await sendDiscordWebhook({
+        name,
+        phone,
+        message: message || '',
+        submittedAt,
+      });
+    } catch (discordError) {
+      console.log(`Discord webhook send failed: ${discordError}`);
+    }
 
     return res.status(200).json({ success: true, message: '상담 신청이 완료되었습니다.' });
   } catch (error) {
