@@ -8,23 +8,19 @@ async function sendConsultationEmail({ name, phone, email, message, submittedAt 
   const subject = `[메디케어콜 상담신청] ${name} / ${phone}`;
   const text = `새 상담 신청이 접수되었습니다.\n\n신청시각: ${submittedAt}\n이름: ${name}\n연락처: ${phone}\n이메일: ${email}\n문의내용: ${message || '(없음)'}`;
 
-  const asciiEmail = /^[\x00-\x7F]+$/.test(email) ? email : null;
-
-  const payload = {
-    from: MAIL_FROM,
-    to: [CONSULT_NOTIFY_EMAIL],
-    subject,
-    text,
-    ...(asciiEmail ? { reply_to: asciiEmail } : {}),
-  };
-
   const resp = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      from: MAIL_FROM,
+      to: [CONSULT_NOTIFY_EMAIL],
+      reply_to: email,
+      subject,
+      text,
+    }),
   });
 
   if (!resp.ok) {
