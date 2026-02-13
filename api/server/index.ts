@@ -2,8 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { handle } from "hono/vercel";
-import * as kv from "./kv_store.js";
-
+// Supabase KV disabled (project expired)
 const CONSULT_NOTIFY_EMAIL = process.env.CONSULT_NOTIFY_EMAIL || "medicare924@gmail.com";
 const MAIL_FROM = process.env.MAIL_FROM || "onboarding@resend.dev";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -85,24 +84,8 @@ app.post("/make-server-6e07f166/consultations", async (c) => {
       );
     }
 
-    // Create a unique key for this consultation using timestamp
+    // Supabase 저장은 만료 이슈로 비활성화, 메일 발송만 수행
     const timestamp = new Date().toISOString();
-    const key = `consultation:${timestamp}:${email}`;
-
-    // Store consultation data
-    const consultationData = {
-      name,
-      phone,
-      email,
-      message: message || "",
-      submittedAt: timestamp,
-    };
-
-    try {
-      await kv.set(key, consultationData);
-    } catch (kvError) {
-      console.log(`KV save skipped/failed: ${kvError}`);
-    }
 
     await sendConsultationEmail({
       name,
@@ -112,7 +95,7 @@ app.post("/make-server-6e07f166/consultations", async (c) => {
       submittedAt: timestamp,
     });
 
-    console.log(`Consultation saved successfully: ${key}`);
+    console.log(`Consultation email sent successfully: ${email}`);
     return c.json({
       success: true,
       message: "상담 신청이 완료되었습니다.",
