@@ -4,6 +4,46 @@ import { logger } from "hono/logger";
 import { handle } from "hono/vercel";
 import * as kv from "./kv_store.js";
 
+const CONSULT_NOTIFY_EMAIL = process.env.CONSULT_NOTIFY_EMAIL || "medicare924@gmail.com";
+const MAIL_FROM = process.env.MAIL_FROM || "onboarding@resend.dev";
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+async function sendConsultationEmail(params: {
+  name: string;
+  phone: string;
+  email: string;
+  message?: string;
+  submittedAt: string;
+}) {
+  if (!RESEND_API_KEY) {
+    console.log("RESEND_API_KEY not set. Skipping consultation email.");
+    return;
+  }
+
+  const subject = `[메디케어콜 상담신청] ${params.name} / ${params.phone}`;
+  const text = `새 상담 신청이 접수되었습니다.\n\n신청시각: ${params.submittedAt}\n이름: ${params.name}\n연락처: ${params.phone}\n이메일: ${params.email}\n문의내용: ${params.message || "(없음)"}`;
+
+  const resp = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: MAIL_FROM,
+      to: [CONSULT_NOTIFY_EMAIL],
+      reply_to: params.email,
+      subject,
+      text,
+    }),
+  });
+
+  if (!resp.ok) {
+    const errText = await resp.text();
+    throw new Error(`Failed to send consultation email: ${resp.status} ${errText}`);
+  }
+}
+
 const app = new Hono().basePath("/api/server");
 
 // Enable logger
@@ -60,6 +100,13 @@ app.post("/make-server-6e07f166/consultations", async (c) => {
     };
 
     await kv.set(key, consultationData);
+    await sendConsultationEmail({
+      name,
+      phone,
+      email,
+      message,
+      submittedAt: timestamp,
+    });
 
     console.log(`Consultation saved successfully: ${key}`);
     return c.json({
