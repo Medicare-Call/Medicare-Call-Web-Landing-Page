@@ -10,7 +10,7 @@ const Footer = () => {
                   <img
                     alt="메디케어콜 로고"
                     className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-                    src="/images/medicarecall.svg"
+                    src="/images/medicarecall.png"
                   />
                 </div>
               </div>
