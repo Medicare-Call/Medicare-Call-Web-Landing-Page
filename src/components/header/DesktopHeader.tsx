@@ -11,13 +11,13 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = ({
       <div className="box-border content-stretch flex flex-col gap-[10px] items-start py-[12px] px-[60px] lg:px-[120px] relative w-full">
         <div className="content-stretch flex items-center justify-between relative shrink-0 w-full mx-auto">
           <div
-            className="content-stretch flex h-[19px] items-center relative shrink-0 w-[134px] cursor-pointer"
+            className="content-stretch flex h-[20px] items-center relative shrink-0 w-[165px] cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="basis-0 grow h-[19.473px] min-h-px min-w-px relative shrink-0">
+            <div className="basis-0 grow h-[20px] min-h-px min-w-px relative shrink-0">
               <img
                 alt="메디케어콜 로고"
-                className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
+                className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-contain object-left pointer-events-none size-full"
                 src="/images/medicarecall.png"
               />
             </div>
